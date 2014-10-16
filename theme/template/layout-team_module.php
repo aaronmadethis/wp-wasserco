@@ -42,7 +42,7 @@
 				foreach ($posts_array as $key => $member) {
 					$group = get_field('group', $member->ID);
 					if($team == $group){
-						if($loop_count == 1) echo "<li class='position'>" . $category->cat_name . "</li>";
+						if($loop_count == 1) echo "<li class='position'>" . $category->description . "</li>";
 						if($active == 1){
 							$active = 'active';
 						}else{
