@@ -1,4 +1,4 @@
-<div class="page_layout layout_standard">
+<div class="page_layout layout_standard col-xs-12">
 	<div class="col-xs-8 left_text">
 		<?php the_sub_field('text'); ?>
 	</div>

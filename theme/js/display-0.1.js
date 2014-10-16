@@ -43,6 +43,157 @@ jQuery(document).ready(function($) {
 	}
 	if (window.attachEvent) window.attachEvent("onload", sfHover);
 
+
+	/* ---------------------------------------------------------------------------------------
+	HEIGHT FIX FOR 2UP LAYOUT
+	--------------------------------------------------------------------------------------- */
+	function set_two_up_height(){
+		var h1 = $('.layout_two_up .cta:eq(0)').height(),
+			h2 = $('.layout_two_up .cta:eq(1)').height();
+
+		if(h1 > h2){
+			$('.layout_two_up .cta:eq(1)').css('height', h1);
+		}else if(h2 > h1){
+			$('.layout_two_up .cta:eq(0)').css('height', h2);
+		}
+	}
+	if( $('.layout_two_up').length > 0){
+		set_two_up_height();
+	}
+
+	/* ---------------------------------------------------------------------------------------
+	SIMPLE AJAX TO RETURN INVESTMENT IMAGES AND DESCRIPTION
+	--------------------------------------------------------------------------------------- */
+	var getFull;
+	$('.open_overlay').click(function(e) {
+
+		$('#overlay-wrapper').css({'display': 'block'}).stop(false, true).animate({opacity: 1},400);
+
+		var link = this,
+			p_id = $(link).attr('data-post-id');
+			data = {
+				action: 'amt_investments_overlay',
+				the_id: p_id
+			}
+		getFull = $.get(amt_investment_full.ajaxurl, data, function(data){
+			open_investment_overlay(data);
+		});
+
+		e.preventDefault();
+	});
+
+	function open_investment_overlay(item_object){
+		var obj = jQuery.parseJSON(item_object);
+		console.log(obj);
+
+		$('#overlay-wrapper .logo').css('background-image', 'url(' + obj.logo[0] + ')');
+		$('#overlay-wrapper .primary').css('background-image', 'url(' + obj.img_pri[0] + ')');
+		$('#overlay-wrapper .secondary').css('background-image', 'url(' + obj.img_sec[0] + ')');
+
+		$('#overlay-wrapper .title').html(obj.title);
+		$('#overlay-wrapper .init').html('Initial Investment: ' + obj.init);
+		$('#overlay-wrapper .text').html(obj.text);
+		$('#overlay-wrapper .button').html('<span></span>Visit ' + obj.title);
+		$('#overlay-wrapper .button').attr('href', obj.url);
+		
+		$('#overlay-container').css({'visibility': 'visible'}).stop(true, true).animate({opacity: 1},400, function(){
+			$('#overlay-wrapper').css({'display': 'block'}).stop(true, true).animate({opacity: 1},400);
+		});	
+
+		$('.overlay-close').click(function(e){
+			getFull.abort();
+			close_overlay();
+			e.preventDefault();
+		});
+		$('.overlay-fill').click(function(e){
+			getFull.abort();
+			close_overlay();
+			e.preventDefault();
+		});
+
+	}
+
+	function close_overlay(){
+		$('#overlay-container').animate({opacity: 0},400, function(){ $(this).css({'visibility': 'visible'}); });
+		$('#overlay-wrapper').animate({opacity: 0},400, function(){
+			$(this).css({'display': 'none', opacity: 0});
+			$('#overlay-wrapper .logo, #overlay-wrapper .primary, #overlay-wrapper .secondary').css('background-image', '');
+			$('.caption').html(' ');
+			$('#overlay-wrapper .title, #overlay-wrapper .text').html(' ');
+		});
+	}
+
+	/* ---------------------------------------------------------------------------------------
+	TEAM BIO SWITCHER
+	--------------------------------------------------------------------------------------- */
+	function display_team_member(member_id){
+		var id = member_id;
+
+		$('.team_members .active').stop(true, true).animate({opacity: 0},400, function(){
+			$(this).css({'visible': 'hidden', opacity: 0}).removeClass('active');
+			$('.team_members').find('.' + id).addClass('active').css({'visibility': 'visible'}).stop(true, true).animate({opacity: 1},400);
+		});
+	}
+
+	function init_team_member(){
+		$('.team_menu .member_name a').click(function(e){
+			if ( !$(this).parent().hasClass('active') ) {
+				$('.team_menu').find('.active').removeClass('active');
+
+				var id = $(this).parent().attr('data-id');
+				$(this).parent().addClass('active');
+				display_team_member(id );	
+			}
+			e.preventDefault();
+		});
+	}
+
+	if( $('.team_menu').length > 0 ){
+		init_team_member();
+	}
+
+	/* ---------------------------------------------------------------------------------------
+	TAB SWITCHER
+	--------------------------------------------------------------------------------------- */
+	function display_tab(tab_index){
+		var id = tab_index;
+
+		$('.tabs .active').stop(true, true).animate({opacity: 0},0, function(){
+			$(this).css({'visible': 'hidden', opacity: 0}).removeClass('active');
+			$('.tabs .single_tab').eq(id).addClass('active').css({'visibility': 'visible'}).stop(true, true).animate({opacity: 1},0);
+		});
+	}
+
+	function init_tabs(){
+		/*var tallest = 0,
+			h = 0;
+
+		$('.single_tab').each(function(i){
+			if( $(this).height() > h ){
+				h = $(this).height();
+				tallest = i;
+			}
+		});
+		$('.single_tab').eq(tallest).css('position', 'relative');*/
+
+
+		$('.tab_nav .tab_menu a').click(function(e){
+			if ( !$(this).parent().hasClass('active') ) {
+				$('.tab_nav').find('.active').removeClass('active');
+
+				var tab_index = $(this).parent().index();
+				$(this).parent().addClass('active');
+				display_tab(tab_index);	
+			}
+			e.preventDefault();
+		});
+	}
+
+	if( $('.layout_tabs').length > 0 ){
+		init_tabs();
+	}
+
+
 	/* ---------------------------------------------------------------------------------------
 	WINDOW RATIO
 	--------------------------------------------------------------------------------------- */

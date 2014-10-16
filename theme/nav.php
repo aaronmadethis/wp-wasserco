@@ -9,24 +9,21 @@
 
 		<nav class="desktop">
 			<?php
-				$args = array(
+				$defaults = array(
 					'depth'       => 2,
-					'sort_column' => 'menu_order, post_title',
 					'menu_class'  => 'menu',
 					'include'     => '',
 					'exclude'     => '',
 					'echo'        => true,
-					'show_home'   => false,
-
 					'link_before' => '<span>',
 					'link_after'  => '</span>' 
 				);
 
-			 	wp_page_menu( $args );
+			 	wp_nav_menu( $defaults );
 			?>
 		</nav>
 
-		<a href=""><div class="login">INVESTOR LOGIN</div></a>
+		<a href="https://investor.wasserco.com/EPrivateEquityPEO-Wasserco/Utility/EWebLPLogin.aspx" target="_blank"><div class="login">INVESTOR LOGIN</div></a>
 	</div>
 </header>
 

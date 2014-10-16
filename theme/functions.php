@@ -9,9 +9,9 @@ if ( function_exists( 'add_theme_support' ) ) {
 }	
 if ( function_exists( 'add_image_size' ) ) { 
 	add_image_size( 'fullscreen', 2880, 1800, false );
-	add_image_size( 'blog-roll', 1520, 968, true );
-	add_image_size( 'gallery_thumb', 800, 800, true );
-	add_image_size( 'gallery_mason', 390, 9999, false);
+	add_image_size( 'team_bio', 304, 394, true );
+	add_image_size( 'investment_big', 634, 382, false );
+	add_image_size( 'investment_small', 468, 322, false );
 }
 
 /* ================================================================================
@@ -34,12 +34,12 @@ HELP WITH EMAIL FORM
 ================================================================================ */
 add_filter( 'wp_mail_from', 'my_mail_from' );
 function my_mail_from( $email ) {
-    return "info@aaronmadethis.com.com";
+    return "info@wasserco.com";
 }
 
 add_filter( 'wp_mail_from_name', 'my_mail_from_name' );
 function my_mail_from_name( $name ){
-    return "Aaron Made This";
+    return "Wasserstein & Co";
 }
 
 /* ================================================================================
@@ -68,6 +68,16 @@ if( function_exists('acf_add_options_page') ) {
 	));
 	
 }
+
+
+/* ================================================================================
+REMOVE POSTS AND COMMENTS FROM ADMIN
+================================================================================ */
+function remove_menus(){
+	remove_menu_page( 'edit.php' );                   //Posts
+	remove_menu_page( 'edit-comments.php' );          //Comments
+}
+add_action( 'admin_menu', 'remove_menus' );
 
 /* ================================================================================
 CREATE A MULTI-COLUMN LIST OUT OF ONE LIST
@@ -175,6 +185,76 @@ function ap_better_thunbnails( $post_id, $img_size ){
 	}
 }
 
+/* ================================================================================
+CREATE A MULTI-COLUMN TEXT OUT OF ONE TEXT
+================================================================================ */
+function create_text_columns($html, $num_col){
+	//count number of characters
+	$base_char_leng = strlen($html);
+
+	$halfway = $base_char_leng / 2;
+
+	//divide number of characters by number of desired columns
+	$char_per_col = $base_char_leng / $num_col;
+
+	//find the closest space
+	$first_p = strpos($html, '</p>', $char_per_col);
+	$pos = strpos($html, '</p>', $char_per_col);
+	if ($pos === false) {
+		//no paragraph tags
+		$char_per_col = $char_per_col + 90;
+		$pos = strpos($html, ' ', $char_per_col);
+		//$pos = $pos + 90;
+
+		$first_col = substr($html, 0, $pos);
+		$second_col = substr($html, $pos + 1);
+		$bug = 1;
+
+	}elseif ( $pos < $halfway && $pos > ($halfway - 20) ) {
+		//paragraph break is close to the middle
+		//find the closes space starting from the middle
+		$char_per_col = $char_per_col + 90;
+		$pos = strpos($html, ' ', $char_per_col);
+		//$pos = $pos + 90;
+
+		$first_col = substr($html, 0, $pos);
+		$first_col .= htmlentities('</p>');
+		$second_col = substr($html, $pos + 1);
+		$second_col = htmlentities('<p>') . $second_col;
+		$bug = 3;
+
+	}elseif ( ($base_char_leng - $pos) <= 5 ) {
+		//paragraph break is at the end
+		//find the closes space starting from the middle
+		$pos = strpos($html, '. ', ($char_per_col + 70) );
+		//$pos = $pos + 90;
+
+		$first_col = substr($html, 0, ($pos+2));
+		$first_col .= htmlentities('</p>');
+		$second_col = substr($html, $pos + 1);
+		$second_col = htmlentities('<p>') . $second_col;
+		$bug = 4;
+
+	}else{
+		$pos = $pos + 4;
+		$first_col = substr($html, 0, $pos);
+		$second_col = substr($html, $pos + 1);
+		$bug = 5;
+
+	}
+	
+	$result = array();
+	$result[] = $first_col;
+	$result[] = $second_col;
+	$result['bug'] = $bug;
+	$result['base_char_leng'] = $base_char_leng;
+	$result['pos'] = $pos;
+	//$result['raw'] = $html;
+	//$result['first_p'] = $first_p;
+
+	return $result;
+
+}
 
 /* ================================================================================
 BREADCRUMB
@@ -193,13 +273,40 @@ function the_breadcrumb($p_id) {
                 $anc = get_post_ancestors( $post->ID );
                 $title = get_the_title();
                 foreach ( $anc as $ancestor ) {
-                    $output = '<li><a href="'.get_permalink($ancestor).'" title="'.get_the_title($ancestor).'">'.get_the_title($ancestor).'</a></li> <li class="breaker"> | </li>';
+                	if($ancestor == 10){
+                		$anc_title = "Wasserstein Partners";
+                	}else if($ancestor == 28){
+                		$anc_title = "WDO";
+                	}else{
+                		$anc_title = get_the_title($ancestor);
+                	}
+                    $output = '<li><a href="'.get_permalink($ancestor).'" title="'.$anc_title.'">'.$anc_title.'</a></li> <li class="breaker"> | </li>';
                 }
                 $html .= $output;
                 $html .= '<li><strong title="'.$title.'"> '.$title.'</strong></li>';
             } else {
                 $html .= '<li><strong> '.get_the_title().'</strong></li>';
             }
+        } elseif( is_single() ){
+        	if( get_post_type( $post->ID ) == 'wsc_press'){
+        		$title = get_the_title();
+        		$anc_title = "Press Releases";
+        		$ancestor = get_page_by_title( $anc_title);
+
+        		$html .= '<li><a href="'.get_permalink(10).'" title="Wasserstein Partners">Wasserstein Partners</a></li> <li class="breaker"> | </li>';
+        		$html .= '<li><a href="'.get_permalink($ancestor->ID).'" title="'.$anc_title.'">'.$anc_title.'</a></li> <li class="breaker"> | </li>';
+        		$html .= '<li><strong title="'.$title.'"> '.$title.'</strong></li>';
+        	}elseif(get_post_type( $post->ID ) == 'wdo_news'){
+        		$title = get_the_title();
+        		$anc_title = "News";
+        		$ancestor = get_page_by_title( $anc_title);
+
+        		$html .= '<li><a href="'.get_permalink(28).'" title="WDO">WDO</a></li> <li class="breaker"> | </li>';
+        		$html .= '<li><a href="'.get_permalink($ancestor->ID).'" title="'.$anc_title.'">'.$anc_title.'</a></li> <li class="breaker"> | </li>';
+        		$html .= '<li><strong title="'.$title.'"> '.$title.'</strong></li>';
+        	}else{
+        		$html .= '<li><strong> '.get_the_title().'</strong></li>';
+        	}
         }
     }
     $html .= '</ul>';
@@ -248,6 +355,41 @@ function amt_get_template_part($key, $name){
 }
 
 
+/* ================================================================================
+AJAX INVESTMENTS
+================================================================================ */
+add_action("wp_ajax_nopriv_amt_investments_overlay", "amt_investments_overlay");
+add_action("wp_ajax_amt_investments_overlay", "amt_investments_overlay");
+
+function amt_investments_overlay(){
+	$page_id = $_REQUEST['the_id'];
+	$logo = wp_get_attachment_image_src( get_field('logo', $page_id), 'full' );
+	$img_pri = wp_get_attachment_image_src( get_field('image', $page_id), 'full' );
+	$img_sec = wp_get_attachment_image_src( get_field('second_image', $page_id), 'full' );
+	$title = get_the_title($page_id);
+	$init = get_field('initial_investment', $page_id);
+	$entry = get_field('entry', $page_id);
+	$exit = get_field('exit', $page_id);
+	$url = get_field('url', $page_id);
+	$text = get_field('full_description', $page_id);
+
+	$result = array(
+		'logo' => $logo,
+		'img_pri' => $img_pri,
+		'img_sec' => $img_sec,
+		'title' => $title,
+		'init' => $init,
+		'entry' => $entry,
+		'exit' => $exit,
+		'url' => $url,
+		'text' => $text
+		);
+
+	$result = json_encode( $result );
+    echo $result;
+
+	die();
+}
 
 /* ================================================================================
 COUNTS THE NUMBER OF DATABASE HITS PER PAGE
@@ -276,7 +418,7 @@ function my_script_enqueuer() {
 	wp_register_script( 'display_script', $display_script_url  );
 	$protocol = isset( $_SERVER["HTTPS"] ) ? 'https://' : 'http://';
 	$params = array( 'ajaxurl' => admin_url( 'admin-ajax.php', $protocol ) );
-	wp_localize_script( 'display_script', 'amt_gallery_img', $params );
+	wp_localize_script( 'display_script', 'amt_investment_full', $params );
 
 	wp_enqueue_script('jquery');
 

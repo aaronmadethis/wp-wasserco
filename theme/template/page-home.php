@@ -15,7 +15,11 @@
 </div>
 <div class="hero-cta">
 	<h3><?php the_field('intro_text'); ?></h3>
-	<a class="button" href="">
+	<?php
+	$page_id = 7;
+	$uri = get_page_uri($page_id);
+	?>
+	<a class="button" href="<?php echo $uri; ?>">
 		<span></span>Learn about us
 	</a>
 </div>
@@ -29,7 +33,11 @@
 				<h4>Wasserstein Partners</h4>
 				<h3>Private Equity</h3>
 				
-				<a class="button" href="">
+				<?php
+				$page_id = 10;
+				$uri = get_page_uri($page_id);
+				?>
+				<a class="button" href="<?php echo $uri; ?>">
 					<span></span>Learn More
 				</a>
 			</div>
@@ -39,7 +47,12 @@
 				<h4>Wasserstein Debt Opportunities</h4>
 				<h3>Credit Fund</h3>
 				
-				<a class="button" href="">
+				<?php
+				$page_id = 28;
+				$uri = get_page_uri($page_id);
+				?>
+
+				<a class="button" href="<?php echo $uri; ?>">
 					<span></span>Learn More
 				</a>
 			</div>

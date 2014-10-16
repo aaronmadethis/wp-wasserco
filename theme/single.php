@@ -3,11 +3,13 @@
 
 <?php if ( have_posts() ) : ?>
 	<?php while ( have_posts() ) : the_post(); ?>
+		<article <?php post_class("clearfix footer-spacing"); ?>>
 
-		<?php //** Do Hook Single content
-			do_action('amt_interface_single_content'); 
-		?>
+			<?php
+				amt_get_template_part( 'single', get_post_type( $post->ID ) );
+			?>
 
+		</article>
 	<?php endwhile; ?>
 <?php endif; /*have_posts*/ ?>
 

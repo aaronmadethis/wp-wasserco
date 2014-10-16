@@ -1,3 +1,5 @@
+<?php /* ---- single press template ---- */  ?>
+
 <div class="page_intro light_gray intro_basic">
 
 	<div class="container no-pad">
@@ -7,4 +9,10 @@
 		</div>
 	</div>
 
+</div>
+
+<div class="single_press container no-pad">
+	<div class="col-xs-12">
+		<span class="wyswyg"><?php the_content(); ?></span>
+	<div>
 </div>
