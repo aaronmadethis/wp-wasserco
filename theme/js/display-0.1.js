@@ -129,9 +129,9 @@ jQuery(document).ready(function($) {
 	function display_team_member(member_id){
 		var id = member_id;
 
-		$('.team_members .active').stop(true, true).animate({opacity: 0},400, function(){
+		$('.team_members .active').animate({opacity: 0},100, function(){
 			$(this).css({'visible': 'hidden', opacity: 0}).removeClass('active');
-			$('.team_members').find('.' + id).addClass('active').css({'visibility': 'visible'}).stop(true, true).animate({opacity: 1},400);
+			$('.team_members').find('.' + id).addClass('active').css({'visibility': 'visible'}).animate({opacity: 1},200);
 		});
 	}
 
