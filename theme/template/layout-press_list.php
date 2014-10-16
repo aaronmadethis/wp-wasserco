@@ -8,7 +8,7 @@
 			<a href="<?php the_permalink(); ?>" class="icon col-xs-2"></a>
 			<div class="content clearfix">
 				<h4><?php the_date(); ?></h4>
-				<h3><?php the_title(); ?><h3>
+				<h3><?php the_title(); ?></h3>
 				<a class="button" href="<?php the_permalink(); ?>"><span></span>Read Press Release</a>
 			</div>
 		</div>
