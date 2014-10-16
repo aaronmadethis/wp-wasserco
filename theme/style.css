@@ -1315,7 +1315,11 @@ PAGE LAYOUT-TEAM
 .layout_team_module{
 	padding-top: 65px;
 	}
-
+.team_menu{
+	border-color: #e5e5e5;
+	border-style: solid;
+	border-width: 0 1px 0 0;
+	}
 .team_menu h4{
 	text-transform: uppercase;
 	color: #911e37;
@@ -1356,10 +1360,7 @@ PAGE LAYOUT-TEAM
 	min-height: 520px;
 	position: relative;
 	margin-left: 3%;
-	padding-left: 7%;
-	border-color: #e5e5e5;
-	border-style: solid;
-	border-width: 0 0 0 1px;
+	padding-left: 6%;
 	}
 	.team_members li{
 		position: absolute;
@@ -1568,6 +1569,7 @@ PAGE LAYOUT-PRESS LIST
 		.press-wrapper:nth-child(1){
 			border-width: 1px 1px 1px 1px;
 			}
+	.news-wrapper .icon,
 	.press-wrapper .icon{
 		background-size: 75px auto;
 		background-position: center 35px;
@@ -1586,6 +1588,13 @@ PAGE LAYOUT-PRESS LIST
 		max-width: 800px;
 		width: 80%;
 		}
+	.news-wrapper .content a.button,
+	.press-wrapper .content a.button{
+		display: block;
+		width: 215px;
+		}
+		.news-wrapper .content a.button{ width: 145px; }
+
 	.news-wrapper h4,
 	.press-wrapper h4{
 		margin: 0 0 0 0;
