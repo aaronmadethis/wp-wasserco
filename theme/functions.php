@@ -10,8 +10,11 @@ if ( function_exists( 'add_theme_support' ) ) {
 if ( function_exists( 'add_image_size' ) ) { 
 	add_image_size( 'fullscreen', 2880, 1800, false );
 	add_image_size( 'team_bio', 304, 394, true );
-	add_image_size( 'investment_big', 634, 382, false );
-	add_image_size( 'investment_small', 468, 322, false );
+	add_image_size( 'investment_big', 485, 300, true );
+	add_image_size( 'investment_small', 145, 194, true );
+	add_image_size( 'investment_logo', 578, 382, false );
+	add_image_size( 'standard_lg', 358, 175, true );
+	add_image_size( 'standard_sm', 214, 175, true );
 }
 
 /* ================================================================================
@@ -184,6 +187,23 @@ function ap_better_thunbnails( $post_id, $img_size ){
 		}
 	}
 }
+
+/* ================================================================================
+GET MEDIA/IMAGE DATA
+================================================================================ */
+function get_media_attachment( $attachment_id ) {
+
+	$attachment = get_post( $attachment_id );
+	return array(
+		'alt' => get_post_meta( $attachment->ID, '_wp_attachment_image_alt', true ),
+		'caption' => $attachment->post_excerpt,
+		'description' => $attachment->post_content,
+		'href' => get_permalink( $attachment->ID ),
+		'src' => $attachment->guid,
+		'title' => $attachment->post_title
+	);
+}
+
 
 /* ================================================================================
 CREATE A MULTI-COLUMN TEXT OUT OF ONE TEXT
@@ -364,8 +384,8 @@ add_action("wp_ajax_amt_investments_overlay", "amt_investments_overlay");
 function amt_investments_overlay(){
 	$page_id = $_REQUEST['the_id'];
 	$logo = wp_get_attachment_image_src( get_field('logo', $page_id), 'full' );
-	$img_pri = wp_get_attachment_image_src( get_field('image', $page_id), 'full' );
-	$img_sec = wp_get_attachment_image_src( get_field('second_image', $page_id), 'full' );
+	$img_pri = wp_get_attachment_image_src( get_field('image', $page_id), 'investment_big' );
+	$img_sec = wp_get_attachment_image_src( get_field('second_image', $page_id), 'investment_small' );
 	$title = get_the_title($page_id);
 	$init = get_field('initial_investment', $page_id);
 	$entry = get_field('entry', $page_id);
