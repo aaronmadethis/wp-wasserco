@@ -606,7 +606,7 @@ HERO
 	.hero .image{
 		position: absolute;
 		background-repeat: no-repeat;
-		background-position: top center;
+		background-position: center center;
 		background-size: cover;
 		height: 100%;
 		width: 100%;
@@ -788,6 +788,7 @@ INTRO LAYOUTS-IMAGE
 		top: 0;
 		z-index: 0;
 		}
+		.Philosophy .top_image{background-position: bottom center;}
 		.image_intro .container{
 			z-index: 100;
 			position: absolute;
@@ -894,6 +895,22 @@ PAGE LAYOUT-STANDARD WITH IMAGES
 			margin-left: 15px;
 			background-color: #911e37;
 			}
+		.layout_standard .cap_box{
+			position: relative;
+			width: 100%;
+			}
+		.layout_standard .caption{
+			clear: both;
+			font-size: 10px;
+			font-family: Clan, helvetica, arial, sans-serif;
+			padding: 3px 7px;
+			font-weight: 500;
+			background-color: #e5e5e5;
+			position: absolute;
+			bottom:0px;
+			width: 100%;
+			}
+			.layout_standard .v_caption{width:60%;}
 
 .layout_standard .left_text{
 	padding-right: 60px;
@@ -1085,10 +1102,17 @@ PAGE LAYOUT-INVESTMENTS
 		font-size: 15px;
 		color: #911e37;
 		}
+		.layout_investments h5{
+			font-size: 11px;
+			color: #838385;
+			margin: 6px 0 0 0;
+			padding: 0;
+			}
 	.layout_investments p{
+		margin-top: 10px;
 		font-family: Clan, helvetica, arial, sans-serif;
 		font-size: 15px;
-		line-height: 1.7em;
+		line-height: 1.6em;
 		}
 		.layout_investments h1 + p{ margin-bottom: 20px;}
 
@@ -1113,8 +1137,8 @@ PAGE LAYOUT-INVESTMENTS
 			margin-right: 16px;
 			}
 			.investment_box .inside .content{padding: 20px;}
-			.current_investments .investment_box .inside{ height:440px;}
-			.past_investments .investment_box .inside{ border-width: 0px;}
+			.current_investments .investment_box .inside{ height:500px;}
+			.past_investments .investment_box .inside{ border-width: 0px; min-height: 270px;}
 
 		.investment_box .inside .logo{
 			width: 100%;
