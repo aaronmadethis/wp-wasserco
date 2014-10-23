@@ -6,12 +6,24 @@
 		<?php
 			$img_size = 'full';
 			$h_img_id = get_sub_field('h_image');
-			$h_image = wp_get_attachment_image_src( $h_img_id, $img_size );
+			$h_image = wp_get_attachment_image_src( $h_img_id, 'standard_lg' );
+			$h_data = get_media_attachment($h_img_id);
 			$v_img_id = get_sub_field('v_image');
-			$v_image = wp_get_attachment_image_src( $v_img_id, $img_size );
+			$v_image = wp_get_attachment_image_src( $v_img_id, 'standard_sm' );
+			$v_data = get_media_attachment($v_img_id);
 		?>
-		<div class="h_image" style="background-image: url(<?php echo $h_image[0]; ?>);"></div>
-		<div class="v_image" style="background-image: url(<?php echo $v_image[0]; ?>);"></div>
-		<div class="color_block"><span></span></div>
+		<div class="cap_box clearfix">
+			<div class="h_image" style="background-image: url(<?php echo $h_image[0]; ?>);"></div>
+			<?php if($h_data['caption']) : ?>
+				<div class="h_caption caption"><?php echo $h_data['caption']; ?></div>
+			<?php endif; ?>
+		</div>
+		<div class="cap_box clearfix">
+			<div class="v_image" style="background-image: url(<?php echo $v_image[0]; ?>);"></div>
+			<div class="color_block"><span></span></div>
+			<?php if($v_data['caption']) : ?>
+				<div class="v_caption caption"><?php echo $v_data['caption']; ?></div>
+			<?php endif; ?>
+		</div>
 	</div>
 </div>
