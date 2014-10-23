@@ -25,13 +25,22 @@
 				<div class="investment_box current_investment investment_<?php the_ID(); ?> <?php echo $investment->post_name; ?>">
 					<div class="inside">
 						<?php
-						$img_size = 'investment_big';
+						$img_size = 'investment_logo';
 						$img_id = get_field('logo');
 						$image = wp_get_attachment_image_src( $img_id, $img_size );
 						?>
 						<div class="logo"><span style="background-image:url(<?php echo $image[0]; ?>);"></span></div>
 						<div class="content">
 							<h3 class="title"><?php the_title(); ?></h3>
+							<?php if(get_field('fund')): ?>
+								<h5><?php the_field('fund'); ?></h5>
+							<?php endif; ?>
+							<?php if(get_field('initial_investment')): ?>
+								<h5>Initial Investment: <?php the_field('initial_investment'); ?></h5>
+							<?php endif; ?>
+							<?php if(get_field('exit')): ?>
+								<h5>Exit: <?php the_field('exit'); ?></h5>
+							<?php endif; ?>
 							<p><?php the_field('intro'); ?></p>
 							<a class="button open_overlay" href="#" data-post-id="<?php the_ID(); ?>"><span></span>Learn More</a>
 						</div>
@@ -52,12 +61,21 @@
 				<div class="investment_box past_investment investment_<?php the_ID(); ?> <?php echo $past->post_name; ?>">
 					<div class="inside">
 						<?php
-						$img_size = 'investment_small';
+						$img_size = 'investment_logo';
 						$img_id = get_field('logo');
 						$image = wp_get_attachment_image_src( $img_id, $img_size );
 						?>
 						<div class="logo"><span style="background-image:url(<?php echo $image[0]; ?>);"></span></div>
 						<h3 class="title"><?php the_title(); ?></h3>
+						<?php if(get_field('fund')): ?>
+							<h5><?php the_field('fund'); ?></h5>
+						<?php endif; ?>
+						<?php if(get_field('initial_investment')): ?>
+							<h5>Initial Investment: <?php the_field('initial_investment'); ?></h5>
+						<?php endif; ?>
+						<?php if(get_field('exit')): ?>
+							<h5>Exit: <?php the_field('exit'); ?></h5>
+						<?php endif; ?>
 					</div>
 				</div>
 			<?php endif; ?>
