@@ -43,7 +43,7 @@
 					$group = get_field('group', $member->ID);
 					if($team == $group){
 						if($loop_count == 1) echo "<li class='position'>" . $category->description . "</li>";
-						if($active == 1){
+						if($active == 9999){
 							$active = 'active';
 						}else{
 							$active = ' ';
@@ -64,7 +64,7 @@
 			<?php $loop_count = 1; ?>
 			<?php foreach ($members as $key => $member):  setup_postdata( $GLOBALS['post'] =& $member );	?>
 
-				<li class="single-member member_<?php the_ID(); if($loop_count == 1){ echo ' active';}?>">
+				<li class="single-member member_<?php the_ID(); if($loop_count == 9999){ echo ' active';}?>">
 					<?php
 					$img_size = 'team_bio';
 					$img_id = get_field('portrait');
