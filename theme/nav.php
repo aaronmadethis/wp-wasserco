@@ -23,8 +23,25 @@
 			?>
 		</nav>
 
+		<a href="#" class="open-nav-menu">Menu</a>
+
 		<a href="https://investor.wasserco.com/EPrivateEquityPEO-Wasserco/Utility/EWebLPLogin.aspx" target="_blank"><div class="login">INVESTOR LOGIN</div></a>
 	</div>
 </header>
 
+<nav class="mobile transition-2">
+	<a href="#" class="close-nav-menu">CLOSE</a>
+	<?php
+		$defaults = array(
+			'depth'       => 2,
+			'menu_class'  => 'menu',
+			'include'     => '',
+			'exclude'     => '',
+			'echo'        => true,
+			'link_before' => '<span>',
+			'link_after'  => '</span>' 
+		);
 
+	 	wp_nav_menu( $defaults );
+	?>
+</nav>

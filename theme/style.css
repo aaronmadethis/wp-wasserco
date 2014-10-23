@@ -306,6 +306,8 @@ header{
 		height: 80px;
 		background-repeat: no-repeat;
 		background-image: url(./images/logo-wasserco-white.svg);
+		background-size: 100%;
+		background-position: bottom right;
 		position: absolute;
 		bottom: 0;
 		}
@@ -333,6 +335,17 @@ header{
 		letter-spacing: 1px;
 		}
 
+@media screen and (max-width: 1200px){
+	header .logo{
+		width: 350px;
+		}
+}
+@media screen and (max-width: 991px){
+	header .login{
+		right: 30px;
+		}
+}
+
 .content-wrapper{
 	width: 100%;
 	}
@@ -342,28 +355,28 @@ article{ width: 100%; }
 /* =================================
 PRIMARY NAVIGATION
 ===================================*/
-nav{
+nav.desktop{
 	position: absolute;
 	height: 50px;
 	right: 0;
 	bottom: 0;
 	}
-	nav,
-	nav ul {
+	nav.desktop,
+	nav.desktop ul {
 		padding: 0;
 		margin: 0;
 		list-style: none;
 		}
-	nav a {
+	nav.desktop a {
 		display: block;
 		width: 100%;
 		}
-	nav li {
+	nav.desktop li {
 		float: left;
 		border-width: 0 0 0 0;
 		width: inherit;
 		}
-	nav li ul.sub-menu {
+	nav.desktop li ul.sub-menu {
 		position: absolute;
 		width: 10em;
 		left: -9999em;
@@ -379,34 +392,34 @@ nav{
 		overflow: hidden;
 		z-index: 50;
 		}
-		nav li ul.sub-menu li{
+		nav.desktop li ul.sub-menu li{
 			padding-left: 25px;
 			padding-bottom: 12px;
 			}
-	nav li:hover ul {
+	nav.desktop li:hover ul {
 		left: auto;
 		margin-left: -1px;
 		}
-	nav li:hover ul,
-	nav li.sfhover ul {
+	nav.desktop li:hover ul,
+	nav.desktop li.sfhover ul {
 		left: auto;
 		}
-	nav li.current-menu-item a,
-	nav li.current-menu-parent a,
-	nav li:hover ul.sub-menu,
-	nav li:hover{
+	nav.desktop li.current-menu-item a,
+	nav.desktop li.current-menu-parent a,
+	nav.desktop li:hover ul.sub-menu,
+	nav.desktop li:hover{
 		border-style: solid;
 		border-color: #fff;
 		border-width: 0 0 0 1px;
 		}
-		nav li.current-menu-item ul.sub-menu,
-		nav li.current-menu-item:hover a,
-		nav li.current-menu-parent:hover a,
-		nav li.current-menu-parent:hover ul.sub-menu a{
+		nav.desktop li.current-menu-item ul.sub-menu,
+		nav.desktop li.current-menu-item:hover a,
+		nav.desktop li.current-menu-parent:hover a,
+		nav.desktop li.current-menu-parent:hover ul.sub-menu a{
 			border-width: 0;
 			}
-	nav li:hover ul.sub-menu {height: inherit;}
-	nav li:hover ul.sub-menu li{border-width: 0 0 0 0;}
+	nav.desktop li:hover ul.sub-menu {height: inherit;}
+	nav.desktop li:hover ul.sub-menu li{border-width: 0 0 0 0;}
 	nav a,
 	nav a:link,
 	nav a:visited{
@@ -417,26 +430,26 @@ nav{
 		letter-spacing: 1px;
 		line-height: 17px;
 		}
-		nav li.current-menu-item a,
-		nav li.current-menu-parent a,
-		nav a:hover,
-		nav li:hover a,
-		nav li:hover ul.sub-menu a:hover{
+		nav.desktop li.current-menu-item a,
+		nav.desktop li.current-menu-parent a,
+		nav.desktop a:hover,
+		nav.desktop li:hover a,
+		nav.desktop li:hover ul.sub-menu a:hover{
 			color: #fff;
 			font-weight: 600;
 			}
-			nav li:hover ul.sub-menu a{
+			nav.desktop li:hover ul.sub-menu a{
 				color: #e2ced1;
 				font-weight: 400;
 				}
 
-	nav li.home{width:84px;}
-	nav li.about_us{width:107px;}
-	nav li.wp{width:131px;}
-	nav li.wdo{width:170px;}
-	nav li.contact{width:62px;}
+	nav.desktop li.home{width:84px;}
+	nav.desktop li.about_us{width:107px;}
+	nav.desktop li.wp{width:131px;}
+	nav.desktop li.wdo{width:170px;}
+	nav.desktop li.contact{width:62px;}
 
-	nav li span{
+	nav.desktop li span{
 		display: inline-block;
 		height: 30px;
 		border-style: solid;
@@ -444,21 +457,130 @@ nav{
 		border-width: 0 0 0 1px;
 		padding-left: 8px;
 		}
-		nav li ul.sub-menu span{
+		nav.desktop li ul.sub-menu span{
 			border-width: 0 0 0 0;
 			padding-left: 0px;
 			height: inherit;
 			}
 
-	nav li:hover ul.sub-menu{
+	nav.desktop li:hover ul.sub-menu{
 		-webkit-transition: height 0.2s ease-in-out;
 		-moz-transition: height 0.2s ease-in-out;
 		-ms-transition: height 0.2s ease-in-out;
 		transition: height 0.2s ease-in-out;
 		}
 
-	nav li.wp:hover ul.sub-menu{height:211px;}
-	nav li.wdo:hover ul.sub-menu{height:142px;}
+	nav.desktop li.wp:hover ul.sub-menu{height:211px;}
+	nav.desktop li.wdo:hover ul.sub-menu{height:142px;}
+
+	header .open-nav-menu,
+	nav.mobile {
+		display: none;
+		}
+	header a.open-nav-menu{
+		padding: 6px 46px 6px 10px;
+		font-family: Clan, helvetica, arial, sans-serif;
+		position: absolute;
+		color: #fff;
+		font-weight: 600;
+		letter-spacing: 1px;
+		right: 30px;
+		bottom: 18px;
+		border-style: solid;
+		border-color: #c88f9b;
+		border-width: 1px;
+		background-repeat: no-repeat;
+		background-image: url(./images/icon-menu.svg);
+		background-size: 26px auto;
+		background-position: 64px 7px;
+		}
+
+	nav.mobile{
+		background-color: #000;
+		position: fixed;
+		overflow: auto;
+		-webkit-overflow-scrolling: touch;
+		z-index: 999;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		line-height: 1.8em;
+		padding: 60px;
+		}
+		nav.mobile a{
+			font-size: 18px;
+			font-weight: 400;
+			-webkit-font-smoothing: antialiased;
+			color:#fff;
+			}
+			nav.mobile ul{
+				padding: 0 30px 0 30px;
+				}
+			nav.mobile li{
+				padding: 14px 0 12px 0;
+				border-style: solid;
+				border-color: #333333;
+				border-width: 0 0 1px 0;
+				}
+				nav.mobile li ul.sub-menu li{
+					padding-bottom: 0;
+					border-width: 0;
+					}
+				nav.mobile li a:hover{
+					font-weight: 500;
+					}
+
+	nav.mobile{
+		padding: 120px 0px;
+		left: auto;
+		right: -330px;
+		width: 330px;
+		}
+		nav.mobile.nav-menu-open{
+			right: 0px;
+			}
+		nav.mobile a.close-nav-menu{
+			font-size: 12px;
+			display: block;
+			position: absolute;
+			right:60px;
+			top:60px;
+			-webkit-font-smoothing: subpixel-antialiased;
+			}
+		nav.mobile .sub-menu{
+			padding-left: 0px;
+			height: 0px;
+			overflow: hidden;
+			-webkit-transition: height 0.2s ease-in-out;
+			-moz-transition: height 0.2s ease-in-out;
+			-ms-transition: height 0.2s ease-in-out;
+			transition: height 0.2s ease-in-out;
+			}
+			nav.mobile li.sub-open a{
+				font-weight: 600;
+				}
+				nav.mobile li.sub-open ul.sub-menu a{
+					font-weight: 400;
+					}
+			nav.mobile li.menu-item-109.sub-open ul.sub-menu{
+				height: 284px;
+				}
+			nav.mobile li.menu-item-110.sub-open ul.sub-menu{
+				height: 150px;
+				}
+
+
+@media screen and (max-width: 991px){
+	nav.desktop {
+		display:none;
+		}
+	header .open-nav-menu,
+	nav.mobile {
+		display:block;
+		}
+}
 
 
 /* =================================
@@ -556,6 +678,10 @@ footer .login {
 	margin-top: 10px;
 	}
 
+@media screen and (max-width: 991px){
+	footer .login {display: none;}
+	footer .mega-menu{display: none;}
+}
 
 /* =================================
 BUTTON
@@ -598,7 +724,7 @@ a.button{
 HERO
 ===================================*/
 .hero{
-	padding-top: 35%;
+	padding-top: 25%;
 	position: relative;
 	background-color: #e5e5e5;
 	width: 100%;
@@ -606,7 +732,7 @@ HERO
 	.hero .image{
 		position: absolute;
 		background-repeat: no-repeat;
-		background-position: center center;
+		background-position: center -130px;
 		background-size: cover;
 		height: 100%;
 		width: 100%;
@@ -713,6 +839,18 @@ HOME GATE
 			border-width: 0 0 1px 0;
 			}
 
+@media screen and (max-width: 1200px){
+	.cta{width: 45%;}
+}
+
+/* =================================
+LAYOUT CONTAINER
+===================================*/
+.layout-container.row{
+/*	margin-right: 0;
+	margin-left: 0;*/
+	}
+
 
 /* =================================
 BREADCRUMB
@@ -721,7 +859,12 @@ BREADCRUMB
 	background-color: #e5e5e5;
 	}
 
-.container.no-pad{	padding: 0; }
+.container.no-pad{	padding-right: 0; padding-left: 0; }
+
+@media screen and (max-width: 1200px){
+	.container.no-pad{	padding-right: 15px; padding-left: 15px; }
+}
+
 
 .page_top{
 	background-color: #e5e5e5;
@@ -795,12 +938,17 @@ INTRO LAYOUTS-IMAGE
 			top: 0;
 			left: 50%;
 			}
-@media(min-width:992px){
+@media screen and (min-width:768px){
+	.image_intro .container {
+		margin-left: -384px;
+	}
+}
+@media screen and (min-width:992px){
 	.image_intro .container {
 		margin-left: -485px;
 	}
 }
-@media(min-width:1200px){
+@media screen and (min-width:1200px){
 	.image_intro .container {
 		margin-left: -585px;
 	}
@@ -971,6 +1119,17 @@ PAGE LAYOUT-HISTORY
 		margin-top: 30px;
 		}
 
+@media screen and (max-width: 991px){
+	.layout_history .right_text .column{
+		width: 100%;
+		padding-right: 15px;
+		float:none;
+		}
+	.layout_history .right_text h2{
+		width: 100%;
+		padding-right: 15px;
+		}
+}
 
 /* =================================
 PAGE LAYOUT-HISTORY
@@ -996,6 +1155,13 @@ PAGE LAYOUT-HISTORY
 		font-weight: 400;
 		line-height: 1.4em;
 		text-transform: uppercase;
+		}
+	.wyswyg h3{
+		font-size: 22px;
+		font-weight: 400;
+		margin-top: 50px;
+		margin-bottom: 0;
+		line-height: 1.4em;
 		}
 	.wyswyg ul{
 		list-style: disc;
@@ -1177,6 +1343,15 @@ PAGE LAYOUT-INVESTMENTS
 			bottom: 30px;
 			}
 
+@media screen and (max-width: 1199px){
+	.current_investments .investment_box .inside{ height:530px;}
+	.past_investments .investment_box .inside{ min-height: 290px;}
+}
+@media screen and (max-width: 991px){
+	.current_investments .investment_box{ width: 50%;}
+	.past_investments .investment_box{ width: 33.333333333%;}
+}
+
 
 /* =================================
 INVESTMENTS - OVERLAY
@@ -1268,10 +1443,12 @@ INVESTMENTS - OVERLAY
 			width: 100%;
 			padding-top: 62%;
 			clear:both;
+			background-color: #911e37;
 			}
 		#overlay-container .content-wrapper .images .secondary{
 			width: 30%;
 			padding-top: 40%;
+			background-color: #911e37;
 			}
 		#overlay-container .content-wrapper .images .logo-wrapper{
 			width: 70%;
@@ -1472,6 +1649,14 @@ PAGE LAYOUT-TABS
 			border-width: 1px 1px 0 1px;
 			}
 
+@media screen and (max-width: 991px){
+	.tab_nav span.helper{
+		width: 160px;
+		line-height: 1.2em;
+		padding: 4px 0px 0 16px;
+		}
+}
+
 .tabs{
 	padding: 0;
 	border-style: solid;
@@ -1637,3 +1822,7 @@ PAGE LAYOUT-PRESS LIST
 		font-weight: 400;
 		line-height: 1.4em;
 		}
+
+@media screen and (max-width: 991px){
+	.news-wrapper, .press-wrapper{ width: 100%; }
+}

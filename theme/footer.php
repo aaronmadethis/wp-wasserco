@@ -5,7 +5,7 @@
 			<a href="<?php echo home_url(); ?>"><div class="logo"></div></a>
 		</div>
 
-		<div class="col-xs-5 no-pad">
+		<div class="col-xs-8 col-md-5 no-pad">
 			<?php if(get_field('ny-address', 'option')): ?>
 				<?php while(has_sub_field('ny-address', 'option')): ?>
 					

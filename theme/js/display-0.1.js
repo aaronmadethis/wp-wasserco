@@ -43,6 +43,57 @@ jQuery(document).ready(function($) {
 	}
 	if (window.attachEvent) window.attachEvent("onload", sfHover);
 
+	/* ---------------------------------------------------------------------------------------
+	SLICKNAV
+	--------------------------------------------------------------------------------------- 
+	$('#menu-menu-1').slicknav({
+		label: 'Menu',
+		prependTo:'nav.mobile'
+	});
+	*/
+
+
+	/* ---------------------------------------------------------------------------------------
+	NAV MENU OPEN AND CLOSE
+	--------------------------------------------------------------------------------------- */
+	$('.open-nav-menu, .close-nav-menu').click(function(e) {
+	    var open, top;
+	    top = $(document).scrollTop();
+	    open = $('nav.mobile').is('.nav-menu-open');
+	    $('nav.mobile').toggleClass('nav-menu-open', !open);
+	    if (!$("html").is(".ie")) {
+	        if (open) {
+	            setTimeout(function() {
+	                return $('.primary-header, .nav-menu').css('top', 0);
+	            }, 500);
+	        } else {
+	            $('.primary-header, .nav-menu').css('top', top);
+	        }
+	    }
+	    e.preventDefault();
+	    return e.stopPropagation();
+	});
+	$('.nav-menu a').click(function(e) {
+	    return e.stopPropagation();
+	});
+	$('.content-wrapper, header').click(function(e) {
+	    if ($('nav.mobile').is('.nav-menu-open')) {
+	        $('nav.mobile').removeClass('nav-menu-open');
+	        return $('.primary-header, .nav-menu').css('top', 0);
+	    }
+	});
+
+	$('nav.mobile li.menu-item-has-children a').not( 'ul.sub-menu a' ).click(function(e) {
+		open = $(this).parent().is('.sub-open');
+		if (!open) {
+			$('nav.mobile .sub-open').removeClass('sub-open');
+			$(this).parent().addClass('sub-open');
+		}else{
+			$(this).parent().removeClass('sub-open');
+		}
+		e.preventDefault();
+	});
+
 
 	/* ---------------------------------------------------------------------------------------
 	HEIGHT FIX FOR 2UP LAYOUT
@@ -129,10 +180,14 @@ jQuery(document).ready(function($) {
 	function display_team_member(member_id){
 		var id = member_id;
 
-		$('.team_members .active').animate({opacity: 0},100, function(){
-			$(this).css({'visible': 'hidden', opacity: 0}).removeClass('active');
+		if( $('.team_members .active').length > 0 ){
+			$('.team_members .active').animate({opacity: 0},100, function(){
+				$(this).css({'visible': 'hidden', opacity: 0}).removeClass('active');
+				$('.team_members').find('.' + id).addClass('active').css({'visibility': 'visible'}).animate({opacity: 1},200);
+			});
+		}else{
 			$('.team_members').find('.' + id).addClass('active').css({'visibility': 'visible'}).animate({opacity: 1},200);
-		});
+		}
 	}
 
 	function init_team_member(){
@@ -142,10 +197,16 @@ jQuery(document).ready(function($) {
 
 				var id = $(this).parent().attr('data-id');
 				$(this).parent().addClass('active');
-				display_team_member(id );	
+				display_team_member(id );
+				scrollToAnchor();
 			}
 			e.preventDefault();
 		});
+	}
+
+	function scrollToAnchor(){
+	    var aTag = $(".team_members");
+	    $('html,body').animate({scrollTop: (aTag.offset().top - 100)},'fast');
 	}
 
 	if( $('.team_menu').length > 0 ){
