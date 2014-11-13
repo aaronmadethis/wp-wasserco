@@ -16,7 +16,7 @@
 
 	<div class="current_investments clearfix">
 		<h1 class="title">Current Investments</h1>
-		<p>A selection of current investments</p>
+		<p> &nbsp; </p>
 
 		<?php foreach ($investments as $key => $investment):  setup_postdata( $GLOBALS['post'] =& $investment );	?>
 			<?php 
@@ -65,11 +65,10 @@
 						$img_id = get_field('logo');
 						$image = wp_get_attachment_image_src( $img_id, $img_size );
 						?>
-						<div class="logo"><span style="background-image:url(<?php echo $image[0]; ?>);"></span></div>
-						<h3 class="title"><?php the_title(); ?></h3>
-						<?php if(get_field('fund')): ?>
-							<h5><?php the_field('fund'); ?></h5>
-						<?php endif; ?>
+						<a class="open_overlay" href="#" data-post-id="<?php the_ID(); ?>">
+							<div class="logo"><span style="background-image:url(<?php echo $image[0]; ?>);"></span></div>
+							<h3 class="title"><?php the_title(); ?></h3>
+						</a>
 						<?php if(get_field('initial_investment')): ?>
 							<h5>Initial Investment: <?php the_field('initial_investment'); ?></h5>
 						<?php endif; ?>

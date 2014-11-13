@@ -45,7 +45,7 @@
 				<div class="tree"></div>
 				
 				<h4>Wasserstein Debt Opportunities</h4>
-				<h3>Credit Fund</h3>
+				<h3>Credit</h3>
 				
 				<?php
 				$page_id = 28;

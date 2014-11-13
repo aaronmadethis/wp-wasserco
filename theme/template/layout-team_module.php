@@ -5,6 +5,7 @@
 		$team = get_sub_field('select_team');
 
 		$members = array();
+		$grid = array();
 
 		$cat_args = array(
 			'orderby'                  => 'term_order',
@@ -75,15 +76,38 @@
 					<h2 class="position">
 						<?php
 						$terms = get_terms('position', array('include' => get_field('position')) );
-						echo $terms[0]->name;
+						echo $terms[0]->description;
 						?>
 					</h2><br>
 					<span class="wyswyg"><?php the_field('bio'); ?></span>
 				</li>
+
+				<?php
+					$grid[] = array(
+						"img_url" => $image[0],
+						"name" => get_the_title(),
+						"id" => get_the_ID(),
+						);
+				?>
+
 				<?php $loop_count++; ?>
 			<?php endforeach;
 			wp_reset_postdata(); ?>
 		</ul>
+
+		<div class="bio_grid transition-2">
+			<?php foreach ($grid as $key => $cell): ?>
+				<div class="cell member_<?php echo $cell['id']; ?>" data-id="member_<?php echo $cell['id']; ?>">
+					<a href="#">
+						<div class="grid_img" style="background-image: url(<?php echo $cell['img_url']; ?>);" >
+							<span><?php echo $cell['name']; ?></span>
+							<div class="hilite transition-2"></div>
+						</div>
+					</a>
+				</div>
+			<?php endforeach; ?>
+			
+		</div>
 	</div>
 
 </div>

@@ -13,7 +13,7 @@ if ( function_exists( 'add_image_size' ) ) {
 	add_image_size( 'investment_big', 485, 300, true );
 	add_image_size( 'investment_small', 145, 194, true );
 	add_image_size( 'investment_logo', 578, 382, false );
-	add_image_size( 'standard_lg', 358, 175, true );
+	add_image_size( 'standard_lg', 304, 175, true );
 	add_image_size( 'standard_sm', 214, 175, true );
 }
 
