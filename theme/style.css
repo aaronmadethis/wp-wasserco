@@ -347,6 +347,20 @@
 			right: 30px;
 			}
 	}
+	@media screen and (max-width: 767px){
+		header, header .container { height: 130px;}
+		header .logo{
+			left: 10px;
+			width: 90%;
+			max-width: 400px;
+			}
+
+		header .login{
+			display: none;
+			left: 15px;
+			right: auto;
+			}
+	}
 
 	.content-wrapper{
 		width: 100%;
@@ -619,7 +633,33 @@
 			display:block;
 			}
 	}
-
+	@media screen and (max-width: 767px){
+		header a.open-nav-menu,
+		nav.mobile a.close-nav-menu{
+			bottom: auto;
+			top: 12px;
+			right:0px;
+			}
+		nav.mobile a.close-nav-menu{
+			right:15px;
+			}
+		nav.mobile{
+			position: fixed;
+			width: 100%;
+			right:-100%;
+			}
+		nav.mobile.nav-menu-open{position: absolute;}
+		body.is-mobile{
+			height: 100%;
+			}
+		body.is-mobile #all-wrapper{
+			height: 100% !important;
+			overflow: hidden;
+			}
+		body.is-mobile footer{
+			position: static;
+			}
+	}
 
 	/* =================================
 	FOOTER
@@ -700,10 +740,18 @@
 				text-decoration: underline;
 				}
 				footer .mega-menu .column a span{line-height: inherit;}
-
+/*
 				footer .mega-menu .column:nth-child(1){width: 20%;}
 				footer .mega-menu .column:nth-child(2){width: 40%;}
 				footer .mega-menu .column:nth-child(3){width: 40%;}
+*/
+			footer .page-item-7,
+			footer .page-item-34{
+				position:relative;
+				left: 44%;
+				top: -21px;
+				}
+
 
 	@media screen and (max-width: 991px){
 		footer .mega-menu{
@@ -715,24 +763,28 @@
 			padding: 0 0 0 0;
 			}
 	}
-
-	footer .login {
-		font-family: Clan, helvetica, arial, sans-serif;
-		font-size: 9px;
-		font-weight: 600;
-		vertical-align: middle;
-		letter-spacing: 1px;
-		color: #fff;
-		background-color: #911e37;
-		padding: 9px 8px 6px 8px;
-		display: inline-block;
-		margin-top: 10px;
-		}
-
-	@media screen and (max-width: 991px){
-		footer .login {display: none;}
-		/*footer .mega-menu{display: none;}*/
+	@media screen and (max-width: 767px){
+		footer .mega-menu .column{
+			width: 100%;
+			float:none;
+			padding-bottom: 5px;
+			padding-left: 16px;
+			}
+		footer .page-item-7,
+		footer .page-item-34{
+			position:static;
+			}
+		footer section{
+			border-style: solid;
+			border-color: #e5e5e5;
+			border-width: 1px 0 1px 0;
+			margin-bottom: 7px;
+			}
+		.footer-spacing{
+			margin-bottom: 440px;
+			}
 	}
+
 
 	/* =================================
 	BUTTON
@@ -832,6 +884,32 @@
 			line-height: 1.3em;
 			-webkit-font-smoothing: antialiased;
 			}
+	@media screen and (max-width: 1200px){
+		.hero .image{background-position: center -100px;}
+	}
+
+	@media screen and (max-width: 767px){
+		.hero{ padding-top: 35%; }
+		.hero .image{background-position: center 0px;}
+		.hero-cta{
+			padding: 5px 0 30px 0;
+			}
+			.hero-cta h3{
+				margin-left: 15px;
+				margin-right: 15px;
+				width: auto;
+				font-size: 1.2em;
+				}
+		.hero-cta a.button{
+			margin-top: 10px;
+			}
+	}
+	@media screen and (max-width: 640px){
+		.hero .image{
+			background-size: 150%; 
+			background-position: center -50px;
+			}
+	}
 
 	/* =================================
 	HOME GATE
@@ -907,6 +985,15 @@
 	@media screen and (max-width: 1200px){
 		.cta{width: 45%;}
 	}
+	@media screen and (max-width: 767px){
+		.gate .top{display: none;}
+		.cta{
+			width: 100%;
+			margin-right: 0px;
+			margin-top: 20px;
+			margin-bottom:  10px;
+			}
+	}
 
 	/* =================================
 	LAYOUT CONTAINER
@@ -978,6 +1065,28 @@
 			padding: 5px 15px 40px 15px;
 			}
 
+	@media screen and (max-width: 1200px){
+		.wp_breadcrumb li:last-child {
+			max-width: 515px;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			}
+	}
+	@media screen and (max-width: 991px){
+		.wp_breadcrumb li:last-child { max-width: 295px; }
+	}
+	@media screen and (max-width: 767px){
+		.wp_breadcrumb{ display: none; }
+		h1.title{
+			padding: 5px 0px 10px 0px;
+			}
+		.intro_basic h1.title{
+			padding: 20px 0px 30px 0px;
+			}
+	}
+
+
 
 	/* =================================
 	INTRO LAYOUTS-IMAGE
@@ -1003,6 +1112,24 @@
 				top: 0;
 				left: 50%;
 				}
+	@media screen and (max-width:767px){
+		.top_image{
+			display: none;
+			}
+		.image_intro .container {
+			top: 50%;
+			margin-left: -50%;
+			-webkit-transform: translate(0%, -50%);
+			-moz-transform: translate(0%, -50%);
+			-ms-transform: translate(0%, -50%);
+			-o-transform: translate(0%, -50%);
+			transform: translate(0%, -50%);
+		}
+		.image_intro{
+			background-color: #e5e5e5;
+			}
+	}
+
 	@media screen and (min-width:768px){
 		.image_intro .container {
 			margin-left: -384px;
@@ -1037,6 +1164,12 @@
 			padding: 30px 0 30px 15px;
 			margin: 0;
 			}
+	@media screen and (max-width:767px){
+		.text_intro p{
+			padding: 10px 0 20px 0px;
+			font-size: 18px;
+			}
+	}
 
 	/* =================================
 	INTRO LAYOUTS-EXTENDED
@@ -1146,7 +1279,11 @@
 		font-weight: 500;
 		line-height: 1.6em;
 		}
-
+	
+	@media screen and (max-width:767px){
+		.layout_standard .right_images{ display: none;}
+		.layout_standard .left_text{ padding: 0 0 0 0; }
+	}
 
 	/* =================================
 	PAGE LAYOUT-HISTORY
@@ -1207,6 +1344,26 @@
 			width: 100%;
 			padding-right: 15px;
 			}
+	}
+	@media screen and (max-width:767px){
+		.layout_history{
+			margin: 40px 0px; 
+			}
+		.layout_history .left_image .image{
+			margin-left: 0;
+			margin-right: 0;
+			margin-top: 15px;
+			}
+		.layout_history .right_text{
+			padding: 30px 15px;
+			}
+	}
+	@media screen and (max-width:640px){
+		.layout_history .left_image{
+			width: 55%;
+		}
+		.layout_history .right_text h2{font-size: 22px;}
+		.layout_history .right_text .column{padding-right: 0px;}
 	}
 
 	/* =================================
@@ -1275,6 +1432,11 @@
 			.wyswyg a:hover{
 				text-decoration: underline;
 				}
+		@media screen and (max-width: 767px){
+			.wyswyg p{
+				line-height: 1.5em;
+				}
+		}
 
 	/* =================================
 	PAGE LAYOUT-2UP
@@ -1290,6 +1452,9 @@
 			.layout_two_up .cta .content a{
 				position: absolute;
 				bottom: 30px;
+				}
+			.layout_two_up .cta .content .wyswyg a{
+				position: static;
 				}
 
 	.cta h5{
@@ -1328,6 +1493,16 @@
 		width: 100%;
 		z-index: -100;
 		}
+
+	@media screen and (max-width: 991px){
+		.layout_two_up.Contact .cta .image-holder a{
+			background-size: cover;
+			}
+	}
+
+	@media screen and (max-width: 767px){
+		.content-wrapper.Contact .top{ display: none; }
+	}
 
 	/* =================================
 	PAGE LAYOUT-INVESTMENTS
@@ -1439,7 +1614,28 @@
 		.current_investments .investment_box{ width: 50%;}
 		.past_investments .investment_box{ width: 33.333333333%;}
 	}
-
+	@media screen and (max-width: 767px){
+		.layout_investments h1.title{
+			margin: 0 0;
+			}
+		.layout_investments h1 + p{
+			display: none;
+			}
+		.current_investments .investment_box{
+			width: 100%;
+			}
+			.investment_box .inside{
+				margin-right: 0;
+				margin-left: 0;
+				}
+				.investment_box .inside .content{ padding: 14px; }
+				.layout_investments p{
+					font-size: 14px;
+					line-height: 1.4em;
+					}
+		.past_investments .investment_box{ width: 100%; }
+		.past_investments .investment_box .inside { min-height: 250px; }
+	}
 
 	/* =================================
 	INVESTMENTS - OVERLAY
@@ -1597,6 +1793,34 @@
 				background-position: center center;
 				}
 
+	@media screen and (max-width: 767px){
+		#overlay-wrapper{position: absolute;}
+
+		#overlay-wrapper .preloader_png{ top: 280px;}
+
+		#overlay-container .content-wrapper .images{
+			display: none;
+			}
+		#overlay-container .content-wrapper .content{
+			width: 100%;
+			padding: 15px 15px 30px 15px;
+			}
+			#overlay-container .content-wrapper .content .text.wyswyg p{
+				font-size: 14px;
+				line-height: 1.4em;
+				}
+		#overlay-wrapper a.button{
+			font-size: 10px;
+			letter-spacing: 0px;
+			display: block;
+			}
+		.overlay-close a{
+			right: 15px;
+			bottom: 12px;
+			border-width: 1px 1px 1px 1px;
+			}
+	}
+
 
 	/* =================================
 	PAGE LAYOUT-TEAM
@@ -1750,6 +1974,37 @@
 			}
 	}
 
+	@media screen and (max-width:767px){
+		.team_menu{display: none;}
+		.layout-container .team_members{ padding: 0;}
+		.team_members ul{
+			padding-left: 0;
+			padding-right: 0;
+			position: relative;
+			}
+		.bio_grid {display: none;}
+		.team_members li{
+			border-color: #e5e5e5;
+			border-style: solid;
+			border-width: 1px 0 0 0;
+			position: relative;
+			height: auto;
+			opacity: 1;
+			filter: alpha(opacity=1);
+			padding-top: 20px;
+			margin-bottom: 60px;
+		}
+		.team_members li h1,
+		.team_members li h2{
+			font-size: 20px;
+			}
+		.team_members li .wyswyg p{
+			clear: both;
+			line-height: 1.5em;
+			}
+		.team_members li::after{
+			}
+	}
 
 	/* =================================
 	PAGE LAYOUT-TABS
@@ -1876,6 +2131,45 @@
 					padding: 0 30px;
 					}
 
+	@media screen and (max-width: 767px){
+		.page_layout .tabs-wrapper{
+			padding-left: 0;
+			padding-right: 0;
+			}
+		.tab_nav{ display: none; }
+		.tabs{ border-width: 0 0 0 0; }
+			.tabs .single_tab{
+				margin-bottom: 60px;
+				border-color: #e5e5e5;
+				border-style: solid;
+				border-width: 1px 0 0 0;
+				position: static;
+				opacity: 1;
+				filter: alpha(opacity=100);
+				}
+				.tabs .single_tab .tab_content{
+					padding-left: 0;
+					padding-right: 0;
+					}
+					.tabs .single_tab .tab_content h3{
+						padding: 30px 0px 0px 0px;
+						}
+					.tabs .single_tab .tab_content .wyswyg{
+						padding: 0px 0px 0px 0px;
+						}
+				.tabs .single_tab ul{
+					border-width: 0;
+					position: static;
+					padding-top: 30px;
+					padding-left: 0;
+					padding-right: 0;
+					}
+					.tabs .single_tab ul li{
+						padding-left: 0;
+						padding-right: 0;
+						}
+	}
+
 	/* =================================
 	PAGE LAYOUT-TWO COLUMN
 	===================================*/
@@ -1975,8 +2269,29 @@
 	@media screen and (max-width: 991px){
 		.news-wrapper, .press-wrapper{ width: 100%; }
 	}
-
-
+	@media screen and (max-width: 767px){
+		.news-wrapper, .press-wrapper{
+			padding: 26px 0px;
+			height: auto;
+			border-width: 1px 0 0 0;
+			line-height: inherit;
+			}
+			.news-wrapper:nth-child(1), .press-wrapper:nth-child(1){
+				border-width: 1px 0 0 0;
+				}
+		.news-wrapper .icon, .press-wrapper .icon{
+			display: none;
+			}
+		.news-wrapper .content, .press-wrapper .content{
+			padding-left: 0px;
+			width: 100%;
+			}
+		.single_press.container.no-pad{
+			padding-right: 0;
+			padding-left: 0;
+			padding-bottom: 60px;
+		}
+	}
 
 /* =================================
 PAGE LAYOUT-STANDARD IMAGE - FULL WITDTH

@@ -5,7 +5,7 @@
 			<a href="<?php echo home_url(); ?>"><div class="logo"></div></a>
 		</div>
 
-		<div class="col-xs-12 col-md-6 mega-menu">
+		<div class="col-xs-12 col-md-8 mega-menu">
 			<div class="column">
 				<?php
 				$args = array(

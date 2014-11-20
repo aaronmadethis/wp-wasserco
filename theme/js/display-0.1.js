@@ -4,7 +4,8 @@ jQuery(document).ready(function($) {
 		has_video = $('html.video').length > 0 ? true : false,
 		win_ratio,
 		orientation,
-		is_horizontal;
+		is_horizontal,
+		is_mobile;
 
 	/* ---------------------------------------------------------------------------------------
 	TEST ORIENTATION OF TABLET AND PHONE
@@ -27,6 +28,11 @@ jQuery(document).ready(function($) {
 	window.addEventListener('orientationchange', doOnOrientationChange);
 	doOnOrientationChange();
 
+	function check_mobile(){
+		is_mobile = win_w < 767 ? true : false;
+		return is_mobile;
+	}
+
 	/* ---------------------------------------------------------------------------------------
 	DROPDOWN FIX FOR IE
 	--------------------------------------------------------------------------------------- */
@@ -47,11 +53,18 @@ jQuery(document).ready(function($) {
 	/* ---------------------------------------------------------------------------------------
 	NAV MENU OPEN AND CLOSE
 	--------------------------------------------------------------------------------------- */
+	// if(win_w < 992){
+	// 	$('body').addClass('is-mobile');
+	// }
+
 	$('.open-nav-menu, .close-nav-menu').click(function(e) {
 	    var open, top;
 	    top = $(document).scrollTop();
 	    open = $('nav.mobile').is('.nav-menu-open');
 	    $('nav.mobile').toggleClass('nav-menu-open', !open);
+	    if(win_w < 768){
+	     	$('body').toggleClass('is-mobile', !open);
+	     }
 	    if (!$("html").is(".ie")) {
 	        if (open) {
 	            setTimeout(function() {
@@ -111,6 +124,11 @@ jQuery(document).ready(function($) {
 
 		$('#overlay-wrapper').css({'display': 'block'}).stop(false, true).animate({opacity: 1},400);
 
+		if( check_mobile() ){
+			var aTag = $("#all-wrapper");
+			$('html,body').animate({scrollTop: (aTag.offset().top)},'fast');
+		}
+
 		var link = this,
 			p_id = $(link).attr('data-post-id');
 			data = {
@@ -150,7 +168,7 @@ jQuery(document).ready(function($) {
 		if(obj.url == ""){
 			$('#overlay-wrapper .button').css("display", "none");
 		}else{
-			$('#overlay-wrapper .button').css("display", "inline-block");
+			$('#overlay-wrapper .button').attr("style", " ");
 		}
 		
 		$('#overlay-container').css({'visibility': 'visible'}).stop(true, true).animate({opacity: 1},400, function(){
@@ -243,9 +261,14 @@ jQuery(document).ready(function($) {
 
 		if(hash.length > 0){
 			check_grid();
-			$('.team_menu').find('.' + hash).addClass('active');
-			$('.team_members').find('.' + hash).addClass('active').css({'visibility': 'visible'}).animate({opacity: 1},200);
-			scrollToAnchor();
+			if( check_mobile() ){
+				var aTag = $('.team_members .' + hash);
+				$('html,body').animate({scrollTop: (aTag.offset().top)},'fast');
+			}else{
+				$('.team_menu').find('.' + hash).addClass('active');
+				$('.team_members').find('.' + hash).addClass('active').css({'visibility': 'visible'}).animate({opacity: 1},200);
+				scrollToAnchor();
+			}
 		}
 	}
 

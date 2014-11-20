@@ -1,5 +1,5 @@
 <div class="page_layout layout_team_module col-xs-12">
-	<div class="team_menu col-xs-3 col-md-3 col-lg-3">
+	<div class="team_menu col-xs-3 col-sm-3 col-md-3 col-lg-3">
 		<h4>Select a Team Member</h4>
 	<?php
 		$team = get_sub_field('select_team');
@@ -60,7 +60,7 @@
 		echo "</ul>";
 	?>
 	</div>
-	<div class="team_members col-xs-9 col-md-9 col-lg-9">
+	<div class="team_members col-xs-12 col-sm-9 col-md-9 col-lg-9">
 		<ul class="members-wrap">
 			<?php $loop_count = 1; ?>
 			<?php foreach ($members as $key => $member):  setup_postdata( $GLOBALS['post'] =& $member );	?>

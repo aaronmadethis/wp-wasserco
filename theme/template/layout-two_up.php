@@ -19,8 +19,11 @@
 						<span class="wyswyg">
 							<?php the_sub_field('text'); ?>
 						</span>
-						
-						<a class="button" href="<?php the_sub_field('link_url'); ?>" target="_blank"><span></span><?php the_sub_field('link_name'); ?></a>
+
+						<?php if ( the_sub_field('link_url') ) : ?>
+							<a class="button" href="<?php the_sub_field('link_url'); ?>" target="_blank"><span></span><?php the_sub_field('link_name'); ?></a>
+						<?php endif; ?>
+
 					</div>
 				</div>
 			<?php endwhile; ?>
