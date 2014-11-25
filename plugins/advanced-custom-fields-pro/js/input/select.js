@@ -197,7 +197,7 @@
 						
 						if( $(this).text() == label ) {
 							
-							$list.append( $(this).siblings('ul').html() );
+							$list.append( $(this).siblings('ul').children() );
 							
 							$(this).parent().remove();
 							
@@ -263,7 +263,7 @@
 				 start: function() {
 				 	$input.select2("onSortStart");
 				 },
-				 update: function() {
+				 stop: function() {
 				 	$input.select2("onSortEnd");
 				 }
 			});

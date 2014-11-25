@@ -71,10 +71,13 @@ function position_init() {
 		'position',
 		'wsc_team',
 		array(
+			'hierarchical' => true,
+			'show_ui'           => true,
+			'show_admin_column' => true,
+			'query_var'         => true,
+			'sort' => true,
 			'label' => __( 'Position' ),
 			'rewrite' => array( 'slug' => 'position' ),
-			'hierarchical' => true,
-			'sort' => true,
 			'capabilities' => array(
 				'assign_terms',
 				'edit_terms',
@@ -85,3 +88,74 @@ function position_init() {
 	);
 }
 add_action( 'init', 'position_init' );
+
+add_action( 'restrict_manage_posts', 'my_filter_list' );
+function my_filter_list() {
+    $screen = get_current_screen();
+    global $wp_query;
+    if ( $screen->post_type == 'wsc_team' ) {
+        wp_dropdown_categories( array(
+            'show_option_all' => 'Show All Positions',
+            'taxonomy' => 'position',
+            'name' => 'position',
+            'orderby' => 'name',
+            'selected' => ( isset( $wp_query->query['position'] ) ? $wp_query->query['position'] : '' ),
+            'hierarchical' => false,
+            'depth' => 3,
+            'show_count' => false,
+            'hide_empty' => true,
+        ) );
+    }
+}
+
+add_filter( 'parse_query','perform_filtering' );
+function perform_filtering( $query ) {
+    $qv = &$query->query_vars;
+    if ( ( $qv['position'] ) && is_numeric( $qv['position'] ) ) {
+        $term = get_term_by( 'id', $qv['position'], 'position' );
+        $qv['position'] = $term->slug;
+    }
+}
+
+/* -------------------------------------------------------------------------- */
+add_filter('manage_wsc_team_posts_columns', 'mbe_change_table_column_titles');
+function mbe_change_table_column_titles($columns){
+	unset($columns['date']);// temporarily remove, to have custom column before date column
+	$columns['taxonomy-position'] = 'Position';
+	$columns['date'] = 'Date';// readd the date column
+	return $columns;
+}
+
+add_action('manage_wsc_team_posts_custom_column', 'mbe_change_column_rows', 10, 2);
+function mbe_change_column_rows($column_name, $post_id){
+	if($column_name == 'YOUR-COLUMN-SLUG'){
+		echo get_the_term_list($post_id, 'position', '', ', ', '').PHP_EOL;
+	}
+}
+
+add_filter('manage_edit-wsc_team_sortable_columns', 'mbe_change_sortable_columns');
+function mbe_change_sortable_columns($columns){
+	$columns['taxonomy-position'] = 'taxonomy-position';
+	return $columns;
+}
+
+add_filter('posts_clauses', 'mbe_sort_custom_column', 10, 2);
+function mbe_sort_custom_column($clauses, $wp_query){
+	global $wpdb;
+	if(isset($wp_query->query['orderby']) && $wp_query->query['orderby'] == 'Position'){
+		$clauses['join'] .= <<<SQL
+LEFT OUTER JOIN {$wpdb->term_relationships} ON {$wpdb->posts}.ID={$wpdb->term_relationships}.object_id
+LEFT OUTER JOIN {$wpdb->term_taxonomy} USING (term_taxonomy_id)
+LEFT OUTER JOIN {$wpdb->terms} USING (term_id)
+SQL;
+		$clauses['where'] .= "AND (taxonomy = 'position' OR taxonomy IS NULL)";
+		$clauses['groupby'] = "object_id";
+		$clauses['orderby'] = "GROUP_CONCAT({$wpdb->terms}.name ORDER BY name ASC)";
+		if(strtoupper($wp_query->get('order')) == 'ASC'){
+			$clauses['orderby'] .= 'ASC';
+		} else{
+			$clauses['orderby'] .= 'DESC';
+		}
+	}
+	return $clauses;
+}

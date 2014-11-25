@@ -5,10 +5,16 @@
 		type: 'file',
 		$el: null,
 		
+		actions: {
+			'ready':	'initialize',
+			'append':	'initialize'
+		},
+		
 		events: {
 			'click [data-name="add"]': 		'add',
 			'click [data-name="edit"]': 	'edit',
 			'click [data-name="remove"]':	'remove',
+			'change input[type="file"]':	'change'
 		},
 		
 		focus: function(){
@@ -19,7 +25,18 @@
 			
 		},
 		
-		add : function( $a ) {
+		initialize: function(){
+			
+			// add attribute to form
+			if( this.$el.hasClass('basic') ) {
+				
+				this.$el.closest('form').attr('enctype', 'multipart/form-data');
+				
+			}
+				
+		},
+		
+		add : function() {
 			
 			// reference
 			var self = this;
@@ -53,7 +70,7 @@
 							
 						
 						// find next image field
-						$tr.nextAll('.acf-row').not('.clone').each(function(){
+						$tr.nextAll('.acf-row:visible').each(function(){
 							
 							// get next $field
 							$next = acf.get_field( field_key, $(this) );
@@ -86,7 +103,15 @@
 						// add extra row if next is not found
 						if( !$next ) {
 							
-							$tr = acf.fields.repeater.set( $repeater ).add();
+							$tr = acf.fields.repeater.doFocus( $repeater ).add();
+							
+							
+							// bail early if no $tr (maximum rows hit)
+							if( !$tr ) {
+								
+								return false;
+								
+							}
 							
 							
 							// get next $field
@@ -99,25 +124,31 @@
 						self.doFocus( $next );
 						
 					}
-											
 					
-			    	// vars
-			    	var file = {
-				    	id:		attachment.id,
-				    	title:	attachment.attributes.title,
-				    	name:	attachment.attributes.filename,
-				    	url:	attachment.attributes.url,
-				    	icon:	attachment.attributes.icon,
-				    	size:	attachment.attributes.filesize
-			    	};
-			    	
-			    	
+									
 			    	// add file to field
-			        self.render( file );
+					self.render( self.prepare(attachment) );
 					
 				}
 			});
 			
+		},
+		
+		prepare: function( attachment ) {
+		
+			// vars
+	    	var file = {
+		    	id:		attachment.id,
+		    	title:	attachment.attributes.title,
+		    	name:	attachment.attributes.filename,
+		    	url:	attachment.attributes.url,
+		    	icon:	attachment.attributes.icon,
+		    	size:	attachment.attributes.filesize
+	    	};
+	    	
+	    	
+	    	// return
+	    	return file;
 			
 		},
 		
@@ -136,7 +167,7 @@
 	
 		},
 		
-		edit : function( $a ) {
+		edit : function() {
 			
 			// reference
 			var self = this;
@@ -156,28 +187,14 @@
 				
 				select:	function( attachment, i ) {
 					
-			    	// vars
-			    	var file = {
-				    	id:		attachment.id,
-				    	title:	attachment.attributes.title,
-				    	name:	attachment.attributes.filename,
-				    	url:	attachment.attributes.url,
-				    	icon:	attachment.attributes.icon,
-				    	size:	attachment.attributes.filesize
-			    	};
-			    	
-			    	
-			    	// add file to field
-			        self.render( file );
+			    	self.render( self.prepare(attachment) );
 					
 				}
 			});
 			
-			
 		},
 		
-		
-		remove : function( $a ) {
+		remove : function() {
 			
 			// vars
 	    	var file = {
@@ -199,6 +216,11 @@
 			
 		},
 		
+		change: function( e ){
+			
+			this.$el.find('[data-name="id"]').val( e.$el.val() );
+			
+		}
 		
 	});
 	

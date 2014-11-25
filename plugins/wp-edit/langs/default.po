@@ -1,0 +1,1368 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WP Edit\n"
+"POT-Creation-Date: 2014-07-08 12:06-0500\n"
+"PO-Revision-Date: 2014-07-08 12:06-0500\n"
+"Last-Translator: \n"
+"Language-Team: Josh Lobe <joshlobe@joshlobe.com>\n"
+"Language: English\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.5\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: ..\n"
+
+#: ../functions.php:41 ../main.php:203 ../main.php:1007
+msgid "WP Edit"
+msgstr ""
+
+#: ../functions.php:49 ../functions.php:52 ../main.php:1015
+msgid "Buttons"
+msgstr ""
+
+#: ../functions.php:58 ../functions.php:61 ../main.php:1016
+msgid "Global"
+msgstr ""
+
+#: ../functions.php:67 ../functions.php:70 ../main.php:1017
+msgid "General"
+msgstr ""
+
+#: ../functions.php:76 ../functions.php:79 ../main.php:1018
+msgid "Posts/Pages"
+msgstr ""
+
+#: ../functions.php:85 ../functions.php:88 ../main.php:1019
+msgid "Editor"
+msgstr ""
+
+#: ../functions.php:94 ../functions.php:97 ../main.php:1020 ../main.php:1765
+msgid "Fonts"
+msgstr ""
+
+#: ../functions.php:103 ../functions.php:106
+msgid "Widgets"
+msgstr ""
+
+#: ../functions.php:112 ../functions.php:115 ../main.php:1022
+msgid "User Specific"
+msgstr ""
+
+#: ../functions.php:121 ../functions.php:124 ../main.php:1023
+msgid "Extras"
+msgstr ""
+
+#: ../functions.php:130 ../functions.php:133 ../main.php:1024
+msgid "Database"
+msgstr ""
+
+#: ../functions.php:172
+msgid "WP Edit Excerpt"
+msgstr ""
+
+#: ../functions.php:204
+msgid "Wp Edit Excerpt"
+msgstr ""
+
+#: ../functions.php:235
+msgid "Biographical Info"
+msgstr ""
+
+#: ../functions.php:242
+msgid ""
+"Share a little biographical information to fill out your profile. This may "
+"be shown publicly."
+msgstr ""
+
+#: ../functions.php:279
+msgid "Arbitrary text, HTML, or PHP Code"
+msgstr ""
+
+#: ../functions.php:281
+msgid "WP Edit PHP Widget"
+msgstr ""
+
+#: ../functions.php:316
+msgid "Title:"
+msgstr ""
+
+#: ../functions.php:321
+msgid "Automatically add paragraphs."
+msgstr ""
+
+#: ../functions.php:487
+msgid "Select which post types have the option to disable the wpautop filter."
+msgstr ""
+
+#: ../functions.php:542
+msgid "Disable wpautop:"
+msgstr ""
+
+#: ../functions_user.php:125
+msgid "ID"
+msgstr ""
+
+#: ../functions_user.php:147
+msgid "Thumbnail"
+msgstr ""
+
+#: ../functions_user.php:169
+msgid "None"
+msgstr ""
+
+#: ../functions_user.php:214
+msgid "WP Edit Pro RSS Feed"
+msgstr ""
+
+#: ../functions_user.php:257
+msgid "Number of posts to show:"
+msgstr ""
+
+#: ../main.php:296
+msgid "User specific options saved."
+msgstr ""
+
+#: ../main.php:316
+msgid "Additional options saved."
+msgstr ""
+
+#: ../main.php:337
+msgid "Tinymce options saved."
+msgstr ""
+
+#: ../main.php:358
+msgid "Global options successfully saved."
+msgstr ""
+
+#: ../main.php:384
+msgid "General options successfully saved."
+msgstr ""
+
+#: ../main.php:417
+msgid "Revisions successfully deleted"
+msgstr ""
+
+#: ../main.php:419
+msgid "No POST revisions were found to delete"
+msgstr ""
+
+#: ../main.php:432
+msgid "Message: "
+msgstr ""
+
+#: ../main.php:434
+msgid "Database size before deletions: "
+msgstr ""
+
+#: ../main.php:436 ../main.php:440
+msgid "megabytes."
+msgstr ""
+
+#: ../main.php:438
+msgid "Database Size after deletions: "
+msgstr ""
+
+#: ../main.php:462
+msgid "Posts/Pages options successfully saved."
+msgstr ""
+
+#: ../main.php:494
+msgid "Editor options successfully saved."
+msgstr ""
+
+#: ../main.php:516
+msgid "Font options successfully saved."
+msgstr ""
+
+#: ../main.php:546
+msgid "Extra options saved."
+msgstr ""
+
+#: ../main.php:573
+msgid "Editor Rows configuration saved."
+msgstr ""
+
+#: ../main.php:589
+msgid ""
+"You must also check the confirm box before options will be uninstalled and "
+"deleted."
+msgstr ""
+
+#: ../main.php:597 ../main.php:864
+msgid "Sorry, your nonce did not verify."
+msgstr ""
+
+#: ../main.php:795
+msgid "Plugin settings have successfully attempted to convert."
+msgstr ""
+
+#: ../main.php:801
+msgid "Unfortunately, no settings were found to convert."
+msgstr ""
+
+#: ../main.php:807
+msgid " buttons added to row 1 in \"Buttons\" tab."
+msgstr ""
+
+#: ../main.php:810
+msgid " options updated in \"Global\" tab."
+msgstr ""
+
+#: ../main.php:813
+msgid " options updated in \"General\" tab."
+msgstr ""
+
+#: ../main.php:816
+msgid " options updated in \"Posts/Pages\" tab."
+msgstr ""
+
+#: ../main.php:819
+msgid " options updated in \"User Specific\" tab."
+msgstr ""
+
+#: ../main.php:822
+msgid " options updated in \"Extras\" tab."
+msgstr ""
+
+#: ../main.php:824
+msgid ""
+"Delete old Ultimate Tinymce database options? (Irreversible; but results in "
+"a cleaner database)"
+msgstr ""
+
+#: ../main.php:829
+msgid "Delete"
+msgstr ""
+
+#: ../main.php:830
+msgid "No Thanks"
+msgstr ""
+
+#: ../main.php:850
+msgid "Ultimate Tinymce database options successfully deleted."
+msgstr ""
+
+#: ../main.php:852
+msgid "Congratulations! You are now running solid with WP Edit."
+msgstr ""
+
+#: ../main.php:885
+msgid "Plugin settings have been restored to defaults."
+msgstr ""
+
+#: ../main.php:899
+msgid "Plugin settings have been successfully imported."
+msgstr ""
+
+#: ../main.php:951
+msgid "Check successful.  No new buttons were discovered."
+msgstr ""
+
+#: ../main.php:973
+msgid ""
+"Check successful.  New buttons have been added to the \"Icon Placeholder "
+"Container\""
+msgstr ""
+
+#: ../main.php:1021
+msgid "Snidgets"
+msgstr ""
+
+#: ../main.php:1038
+msgid "Drag and Drop Panel"
+msgstr ""
+
+#: ../main.php:1039
+msgid "Editor Rows"
+msgstr ""
+
+#: ../main.php:1067 ../main.php:1165
+msgid "Bold"
+msgstr ""
+
+#: ../main.php:1068 ../main.php:1166
+msgid "Italic"
+msgstr ""
+
+#: ../main.php:1069 ../main.php:1167
+msgid "Strikethrough"
+msgstr ""
+
+#: ../main.php:1070 ../main.php:1168
+msgid "Bullet List"
+msgstr ""
+
+#: ../main.php:1071 ../main.php:1169
+msgid "Numbered List"
+msgstr ""
+
+#: ../main.php:1072 ../main.php:1170
+msgid "Blockquote"
+msgstr ""
+
+#: ../main.php:1073 ../main.php:1171
+msgid "Align Left"
+msgstr ""
+
+#: ../main.php:1074 ../main.php:1172
+msgid "Align Center"
+msgstr ""
+
+#: ../main.php:1075 ../main.php:1173
+msgid "Align Right"
+msgstr ""
+
+#: ../main.php:1076 ../main.php:1174
+msgid "Link"
+msgstr ""
+
+#: ../main.php:1077 ../main.php:1175
+msgid "Unlink"
+msgstr ""
+
+#: ../main.php:1078 ../main.php:1176
+msgid "More"
+msgstr ""
+
+#: ../main.php:1079 ../main.php:1177
+msgid "Distraction Free"
+msgstr ""
+
+#: ../main.php:1081 ../main.php:1180
+msgid "Format Select"
+msgstr ""
+
+#: ../main.php:1082 ../main.php:1181
+msgid "Underline"
+msgstr ""
+
+#: ../main.php:1083 ../main.php:1182
+msgid "Align Full"
+msgstr ""
+
+#: ../main.php:1084 ../main.php:1183
+msgid "Foreground Color"
+msgstr ""
+
+#: ../main.php:1085 ../main.php:1184
+msgid "Paste Text"
+msgstr ""
+
+#: ../main.php:1086 ../main.php:1185
+msgid "Remove Format"
+msgstr ""
+
+#: ../main.php:1087 ../main.php:1186
+msgid "Character Map"
+msgstr ""
+
+#: ../main.php:1088 ../main.php:1187
+msgid "Outdent"
+msgstr ""
+
+#: ../main.php:1089 ../main.php:1188
+msgid "Indent"
+msgstr ""
+
+#: ../main.php:1090 ../main.php:1189
+msgid "Undo"
+msgstr ""
+
+#: ../main.php:1091 ../main.php:1190
+msgid "Redo"
+msgstr ""
+
+#: ../main.php:1092 ../main.php:1191
+msgid "Help"
+msgstr ""
+
+#: ../main.php:1095 ../main.php:1194
+msgid "Font Select"
+msgstr ""
+
+#: ../main.php:1096 ../main.php:1195
+msgid "Font Size Select"
+msgstr ""
+
+#: ../main.php:1097 ../main.php:1196
+msgid "Formats"
+msgstr ""
+
+#: ../main.php:1098 ../main.php:1197
+msgid "Background Color Picker"
+msgstr ""
+
+#: ../main.php:1099 ../main.php:1198
+msgid "Media"
+msgstr ""
+
+#: ../main.php:1100 ../main.php:1199
+msgid "Text Direction Right to Left"
+msgstr ""
+
+#: ../main.php:1101 ../main.php:1200
+msgid "Text Direction Left to Right"
+msgstr ""
+
+#: ../main.php:1102 ../main.php:1201
+msgid "Tables"
+msgstr ""
+
+#: ../main.php:1103 ../main.php:1202
+msgid "Anchor"
+msgstr ""
+
+#: ../main.php:1104 ../main.php:1203
+msgid "HTML Code"
+msgstr ""
+
+#: ../main.php:1105 ../main.php:1204
+msgid "Emoticons"
+msgstr ""
+
+#: ../main.php:1106 ../main.php:1205
+msgid "Horizontal Rule"
+msgstr ""
+
+#: ../main.php:1107 ../main.php:1206
+msgid "Insert Date Time"
+msgstr ""
+
+#: ../main.php:1108 ../main.php:1207
+msgid "Page Break"
+msgstr ""
+
+#: ../main.php:1109 ../main.php:1208
+msgid "Preview"
+msgstr ""
+
+#: ../main.php:1110 ../main.php:1209
+msgid "Print"
+msgstr ""
+
+#: ../main.php:1111 ../main.php:1210
+msgid "Search and Replace"
+msgstr ""
+
+#: ../main.php:1112 ../main.php:1211
+msgid "Show Blocks"
+msgstr ""
+
+#: ../main.php:1113 ../main.php:1212
+msgid "Subscript"
+msgstr ""
+
+#: ../main.php:1114 ../main.php:1213
+msgid "Superscript"
+msgstr ""
+
+#: ../main.php:1115 ../main.php:1214
+msgid "Paragraph Tag"
+msgstr ""
+
+#: ../main.php:1116 ../main.php:1215
+msgid "Line Break"
+msgstr ""
+
+#: ../main.php:1117 ../main.php:1216
+msgid "MailTo Link"
+msgstr ""
+
+#: ../main.php:1118 ../main.php:1217
+msgid "Lorem Ipsum"
+msgstr ""
+
+#: ../main.php:1119 ../main.php:1218
+msgid "Color Picker"
+msgstr ""
+
+#: ../main.php:1120 ../main.php:1219
+msgid "Shortcodes"
+msgstr ""
+
+#: ../main.php:1121 ../main.php:1220
+msgid "YouTube Video"
+msgstr ""
+
+#: ../main.php:1122 ../main.php:1221
+msgid "Clker Images"
+msgstr ""
+
+#: ../main.php:1123 ../main.php:1222
+msgid "Clear Div"
+msgstr ""
+
+#: ../main.php:1124 ../main.php:1223
+msgid "Code Magic"
+msgstr ""
+
+#: ../main.php:1125 ../main.php:1224
+msgid "Accessibility Checker"
+msgstr ""
+
+#: ../main.php:1126 ../main.php:1225
+msgid "Image"
+msgstr ""
+
+#: ../main.php:1127 ../main.php:1226
+msgid "Insert/Edit Advanced Link"
+msgstr ""
+
+#: ../main.php:1128 ../main.php:1227
+msgid "Accessibility Check"
+msgstr ""
+
+#: ../main.php:1150
+msgid "Button Placeholder Container"
+msgstr ""
+
+#: ../main.php:1243
+msgid ""
+"Buttons may be dragged to Row 1 (enabling them); or to the Placeholder "
+"Container (removing them from the editor)."
+msgstr ""
+
+#: ../main.php:1245
+msgid "Buttons may also be sorted within Row 1."
+msgstr ""
+
+#: ../main.php:1247
+msgid ""
+"Each time a button is dropped, an ajax call is made which updates all rows. "
+"This feature can be disabled with the additional option."
+msgstr ""
+
+#: ../main.php:1249
+msgid ""
+"Drag and Drop ability for all four rows of the editor is available in WP "
+"Edit Pro."
+msgstr ""
+
+#: ../main.php:1256
+msgid "Buttons available in Pro"
+msgstr ""
+
+#: ../main.php:1286
+msgid "Developer Note"
+msgstr ""
+
+#: ../main.php:1291
+msgid ""
+"This plugin is the culmination of two years experience; many, many hours of "
+"hard work and dedication; and a vast presence in the WordPress community."
+msgstr ""
+
+#: ../main.php:1293
+msgid "If you enjoy this plugin, please show your appreciation via a "
+msgstr ""
+
+#: ../main.php:1295
+msgid "PayPal Donation"
+msgstr ""
+
+#: ../main.php:1297
+msgid "Alternatively, the purchase of the "
+msgstr ""
+
+#: ../main.php:1299
+msgid "PRO Version"
+msgstr ""
+
+#: ../main.php:1301
+msgid ""
+"offers additional features and extended functionality; while also supporting "
+"the developer."
+msgstr ""
+
+#: ../main.php:1310
+msgid "Additional Options"
+msgstr ""
+
+#: ../main.php:1317
+msgid "Restore all buttons to default."
+msgstr ""
+
+#: ../main.php:1319
+msgid "Reset Buttons"
+msgstr ""
+
+#: ../main.php:1323
+msgid "Disable ajax saving of buttons."
+msgstr ""
+
+#: ../main.php:1329
+msgid "Save Button Options"
+msgstr ""
+
+#: ../main.php:1345 ../main.php:1739
+msgid "TinyMCE Options"
+msgstr ""
+
+#: ../main.php:1354
+msgid "Enable editor menu bar."
+msgstr ""
+
+#: ../main.php:1361
+msgid "Enable editor context menu."
+msgstr ""
+
+#: ../main.php:1368
+msgid "Save TinyMCE Options"
+msgstr ""
+
+#: ../main.php:1391
+msgid "Global Options"
+msgstr ""
+
+#: ../main.php:1393
+msgid "These options control various items used throughout the plugin."
+msgstr ""
+
+#: ../main.php:1405
+msgid "jQuery Theme"
+msgstr ""
+
+#: ../main.php:1418
+msgid "Selects the jQuery theme for plugin alerts and notices."
+msgstr ""
+
+#: ../main.php:1421
+msgid "Disable Admin Links"
+msgstr ""
+
+#: ../main.php:1424
+msgid "Disables the WP Edit top admin bar links."
+msgstr ""
+
+#: ../main.php:1430
+msgid "Save Global Options"
+msgstr ""
+
+#: ../main.php:1442
+msgid "General Options"
+msgstr ""
+
+#: ../main.php:1443
+msgid "General plugin options."
+msgstr ""
+
+#: ../main.php:1458
+msgid "Linebreak Shortcode"
+msgstr ""
+
+#: ../main.php:1461
+msgid "Use the [break] shortcode to insert linebreaks in the editor."
+msgstr ""
+
+#: ../main.php:1464
+msgid "Shortcodes in Widgets"
+msgstr ""
+
+#: ../main.php:1467
+msgid "Use shortcodes in widget areas."
+msgstr ""
+
+#: ../main.php:1470
+msgid "Shortcodes in Excerpts"
+msgstr ""
+
+#: ../main.php:1473
+msgid "Use shortcodes in excerpt areas."
+msgstr ""
+
+#: ../main.php:1476
+msgid "WP Edit Post Excerpt"
+msgstr ""
+
+#: ../main.php:1479
+msgid "Add the WP Edit editor to the Post Excerpt area."
+msgstr ""
+
+#: ../main.php:1482
+msgid "WP Edit Page Excerpt"
+msgstr ""
+
+#: ../main.php:1485
+msgid "Add the WP Edit editor to the Page Excerpt area."
+msgstr ""
+
+#: ../main.php:1488
+msgid "Profile Editor"
+msgstr ""
+
+#: ../main.php:1491
+msgid "Use modified editor in profile biography field."
+msgstr ""
+
+#: ../main.php:1494
+msgid "PHP Widgets"
+msgstr ""
+
+#: ../main.php:1497
+msgid "Adds a new widget for PHP code."
+msgstr ""
+
+#: ../main.php:1503
+msgid "Save General Options"
+msgstr ""
+
+#: ../main.php:1516
+msgid "Posts/pages Options"
+msgstr ""
+
+#: ../main.php:1517
+msgid "These options apply specifically to posts and pages."
+msgstr ""
+
+#: ../main.php:1537
+msgid "Post/Page Default Title"
+msgstr ""
+
+#: ../main.php:1540
+msgid "Change the default \"add new\" post/page title field."
+msgstr ""
+
+#: ../main.php:1543
+msgid "Column Shortcodes"
+msgstr ""
+
+#: ../main.php:1546
+msgid "Enable the column shortcodes functionality."
+msgstr ""
+
+#: ../main.php:1549
+msgid "Disable wpautop()"
+msgstr ""
+
+#: ../main.php:1552
+msgid "Disable the filter responsible for removing p and br tags."
+msgstr ""
+
+#: ../main.php:1558
+msgid "Page Revisions"
+msgstr ""
+
+#: ../main.php:1561
+msgid "Max Post Revisions"
+msgstr ""
+
+#: ../main.php:1564
+msgid ""
+"Set max number of Post Revisions to store in database. (empty = unlimited)"
+msgstr ""
+
+#: ../main.php:1567
+msgid "Max Page Revisions"
+msgstr ""
+
+#: ../main.php:1570
+msgid ""
+"Set max number of Page Revisions to store in database. (empty = unlimited)"
+msgstr ""
+
+#: ../main.php:1573
+msgid "Delete Revisions"
+msgstr ""
+
+#: ../main.php:1576
+msgid "Delete all database revisions."
+msgstr ""
+
+#: ../main.php:1579
+msgid "Revisions DB Size"
+msgstr ""
+
+#: ../main.php:1588
+msgid "Current size of revisions stored in database:"
+msgstr ""
+
+#: ../main.php:1596
+msgid "Hide Posts and Pages"
+msgstr ""
+
+#: ../main.php:1599
+msgid "Hide Admin Posts"
+msgstr ""
+
+#: ../main.php:1602
+msgid "Hide selected posts from admin view. ID comma separated (1,5,14,256)"
+msgstr ""
+
+#: ../main.php:1605
+msgid "Hide Admin Pages"
+msgstr ""
+
+#: ../main.php:1608
+msgid "Hide selected pages from admin view. ID comma separated (1,5,14,256)"
+msgstr ""
+
+#: ../main.php:1614
+msgid "Save Posts/Pages Options"
+msgstr ""
+
+#: ../main.php:1627
+msgid "Styles Options"
+msgstr ""
+
+#: ../main.php:1628
+msgid "Adds predefined styles; which can be applied to editor content."
+msgstr ""
+
+#: ../main.php:1629
+msgid "Please be sure the \"Formats\" button is active in the editor."
+msgstr ""
+
+#: ../main.php:1630
+msgid "(More styles coming soon in the Pro version)"
+msgstr ""
+
+#: ../main.php:1638
+msgid "Add Pre-defined Styles"
+msgstr ""
+
+#: ../main.php:1641
+msgid "Adds predefined styles to the \"Formats\" dropdown button."
+msgstr ""
+
+#: ../main.php:1648
+msgid "Editor Options"
+msgstr ""
+
+#: ../main.php:1649
+msgid ""
+"These options will override the initial editor defaults, which will load the "
+"editor using the values below."
+msgstr ""
+
+#: ../main.php:1671
+msgid "Enable Editor Settings"
+msgstr ""
+
+#: ../main.php:1674
+msgid "Executes the values set below when initiating the content editor."
+msgstr ""
+
+#: ../main.php:1678
+msgid "Editor Font"
+msgstr ""
+
+#: ../main.php:1681
+msgid "Font Family (ex. Verdana, Arial, Helvetica, sans-serif)"
+msgstr ""
+
+#: ../main.php:1684
+msgid "Editor Font Color"
+msgstr ""
+
+#: ../main.php:1687
+msgid "Hex Number (ex. 000000)"
+msgstr ""
+
+#: ../main.php:1690
+msgid "Editor Font Size"
+msgstr ""
+
+#: ../main.php:1693
+msgid "Size (ex. 13px)"
+msgstr ""
+
+#: ../main.php:1696
+msgid "Editor Background Color"
+msgstr ""
+
+#: ../main.php:1699
+msgid "Hex Number (ex. FFFFFF)"
+msgstr ""
+
+#: ../main.php:1702
+msgid "Line Height"
+msgstr ""
+
+#: ../main.php:1705
+msgid "Size (ex. 19px)"
+msgstr ""
+
+#: ../main.php:1708
+msgid "Body Padding"
+msgstr ""
+
+#: ../main.php:1711
+msgid "Size (ex. 14px)"
+msgstr ""
+
+#: ../main.php:1714
+msgid "Body Margin"
+msgstr ""
+
+#: ../main.php:1717
+msgid "Size (ex. 10px)"
+msgstr ""
+
+#: ../main.php:1720
+msgid "Text Indent"
+msgstr ""
+
+#: ../main.php:1723
+msgid "Size (ex. 20px)"
+msgstr ""
+
+#: ../main.php:1726
+msgid "Text Direction"
+msgstr ""
+
+#: ../main.php:1729
+msgid "Direction (ex. ltr)"
+msgstr ""
+
+#: ../main.php:1733
+msgid "Restore Settings"
+msgstr ""
+
+#: ../main.php:1740
+msgid ""
+"These options will adjust various parts of the TinyMCE initialization "
+"process."
+msgstr ""
+
+#: ../main.php:1744
+msgid "Change Font to \"px\""
+msgstr ""
+
+#: ../main.php:1747
+msgid ""
+"Switches the default font size in the dropdown list from \"pt\" to \"px\"."
+msgstr ""
+
+#: ../main.php:1753
+msgid "Save Editor Options"
+msgstr ""
+
+#: ../main.php:1766
+msgid "These settings will enable various fonts in the editor."
+msgstr ""
+
+#: ../main.php:1779
+msgid "Activate Google Fonts"
+msgstr ""
+
+#: ../main.php:1782
+msgid "Turns on/off Google Webfonts."
+msgstr ""
+
+#: ../main.php:1791
+msgid "Build Font List"
+msgstr ""
+
+#: ../main.php:1796
+msgid "Step 1:"
+msgstr ""
+
+#: ../main.php:1798
+msgid "Visit "
+msgstr ""
+
+#: ../main.php:1800
+msgid "Google Webfonts"
+msgstr ""
+
+#: ../main.php:1802
+msgid "to see how fonts are displayed in the browser."
+msgstr ""
+
+#: ../main.php:1805
+msgid "Step 2:"
+msgstr ""
+
+#: ../main.php:1807
+msgid ""
+"Once desired fonts are selected, choose them (one at a time) from the "
+"dropdown list below (sorted alphabetically)."
+msgstr ""
+
+#: ../main.php:1816
+msgid "Something went wrong!"
+msgstr ""
+
+#: ../main.php:1837
+msgid ""
+"As fonts are selected, they will appear in the \"Active Fonts\" section "
+"below."
+msgstr ""
+
+#: ../main.php:1847
+msgid "Active Fonts"
+msgstr ""
+
+#: ../main.php:1857
+msgid "Current Font List"
+msgstr ""
+
+#: ../main.php:1876
+msgid "Trash Bin"
+msgstr ""
+
+#: ../main.php:1880
+msgid "Drag fonts here to delete..."
+msgstr ""
+
+#: ../main.php:1887
+msgid "Save Font Options"
+msgstr ""
+
+#: ../main.php:1892
+msgid "Remember to save the options when finished."
+msgstr ""
+
+#: ../main.php:1910
+msgid "Snidget Options"
+msgstr ""
+
+#: ../main.php:1911
+msgid "These options specifically affect how snidgets are handled."
+msgstr ""
+
+#: ../main.php:1922
+msgid "Snidget Builder"
+msgstr ""
+
+#: ../main.php:1925
+msgid "Enables the powerful snidget builder."
+msgstr ""
+
+#: ../main.php:1934
+msgid "Save Widget Options"
+msgstr ""
+
+#: ../main.php:1946
+msgid "User Specific Options"
+msgstr ""
+
+#: ../main.php:1947
+msgid ""
+"These options are stored in individual user meta; meaning each user can set "
+"these options independlently from one another."
+msgstr ""
+
+#: ../main.php:1969
+msgid "Save Scrollbar"
+msgstr ""
+
+#: ../main.php:1972
+msgid "Saves the editor srollbar position when editing long posts (TEXT mode)."
+msgstr ""
+
+#: ../main.php:1975
+msgid "ID Column"
+msgstr ""
+
+#: ../main.php:1978
+msgid "Adds a column to post/page list view for displaying the post/page ID."
+msgstr ""
+
+#: ../main.php:1981
+msgid "Thumbnail Column"
+msgstr ""
+
+#: ../main.php:1984
+msgid "Adds a column to post/page list view for displaying thumbnails."
+msgstr ""
+
+#: ../main.php:1987
+msgid "Hide TEXT Tab"
+msgstr ""
+
+#: ../main.php:1990
+msgid "Hide the editor TEXT tab from view."
+msgstr ""
+
+#: ../main.php:1993
+msgid "Default VISUAL Tab"
+msgstr ""
+
+#: ../main.php:1996
+msgid "Always display VISUAL tab when editor loads."
+msgstr ""
+
+#: ../main.php:1999
+msgid "Disable Dashboard Widget"
+msgstr ""
+
+#: ../main.php:2002
+msgid "Disables WP Edit Pro News Feed dashboard widget."
+msgstr ""
+
+#: ../main.php:2008
+msgid "Post/Page Highlight Colors"
+msgstr ""
+
+#: ../main.php:2009
+msgid ""
+"These options will allow each user to customize highlight colors for each "
+"post/page status."
+msgstr ""
+
+#: ../main.php:2010
+msgid "Meaning.. saved posts can be yellow, published posts can be blue, etc."
+msgstr ""
+
+#: ../main.php:2014
+msgid "Enable Highlights"
+msgstr ""
+
+#: ../main.php:2017
+msgid "Enable the Highlight Options below."
+msgstr ""
+
+#: ../main.php:2020
+msgid "Draft Highlight"
+msgstr ""
+
+#: ../main.php:2025
+msgid "Pending Highlight"
+msgstr ""
+
+#: ../main.php:2030
+msgid "Published Highlight"
+msgstr ""
+
+#: ../main.php:2035
+msgid "Future Highlight"
+msgstr ""
+
+#: ../main.php:2040
+msgid "Private Highlight"
+msgstr ""
+
+#: ../main.php:2071
+msgid "Extra Options"
+msgstr ""
+
+#: ../main.php:2073
+msgid "Signoff Text"
+msgstr ""
+
+#: ../main.php:2074
+msgid ""
+"Use the editor below to create a content chunk that can be inserted anywhere "
+"using the"
+msgstr ""
+
+#: ../main.php:2074
+msgid "shortcode."
+msgstr ""
+
+#: ../main.php:2089
+msgid "QR Codes"
+msgstr ""
+
+#: ../main.php:2091
+msgid "Please use the options below to setup your personalized QR Code."
+msgstr ""
+
+#: ../main.php:2098
+msgid "Enable QR Codes"
+msgstr ""
+
+#: ../main.php:2101
+msgid "A global option which enables all QR Code functionality."
+msgstr ""
+
+#: ../main.php:2104
+msgid "Enable QR Widgets"
+msgstr ""
+
+#: ../main.php:2107
+msgid "Adds new widget for creating QR codes."
+msgstr ""
+
+#: ../main.php:2116
+msgid "Design QR Code"
+msgstr ""
+
+#: ../main.php:2124
+msgid "Title Background"
+msgstr ""
+
+#: ../main.php:2129
+msgid "Content Background"
+msgstr ""
+
+#: ../main.php:2134
+msgid "Text Color"
+msgstr ""
+
+#: ../main.php:2139
+msgid "QR Foreground Color"
+msgstr ""
+
+#: ../main.php:2144
+msgid "QR Background Color"
+msgstr ""
+
+#: ../main.php:2154
+msgid ""
+"This is a preview area.  Changes will not be written to the database until "
+"the \"Save Changes\" button is clicked."
+msgstr ""
+
+#: ../main.php:2156
+msgid "Preview! (<em>Click \"Save Changes\" to update</em>)"
+msgstr ""
+
+#: ../main.php:2166
+msgid ""
+"This is preview text. Use the editor below to create custom text for your "
+"posts/pages."
+msgstr ""
+
+#: ../main.php:2167
+msgid ""
+"It is strongly suggested to use highly contrasting colors for the background "
+"and foreground QR colors."
+msgstr ""
+
+#: ../main.php:2179
+msgid "Title Text"
+msgstr ""
+
+#: ../main.php:2184
+msgid "Content"
+msgstr ""
+
+#: ../main.php:2207
+msgid "Database Options"
+msgstr ""
+
+#: ../main.php:2212
+msgid "Convert Options from Ultimate Tinymce"
+msgstr ""
+
+#: ../main.php:2215
+msgid "Convert any options used by Ultimate Tinymce to WP Edit."
+msgstr ""
+
+#: ../main.php:2217
+msgid "Since so much has changed, not all options may convert successfully."
+msgstr ""
+
+#: ../main.php:2219
+msgid "There will be no harm done to any other plugin or theme options."
+msgstr ""
+
+#: ../main.php:2223
+msgid "Convert Options"
+msgstr ""
+
+#: ../main.php:2229
+msgid "Export WP Edit Options"
+msgstr ""
+
+#: ../main.php:2231
+msgid ""
+"Export the plugin settings for this site as a .json file. This allows you to "
+"easily import the configuration into another site."
+msgstr ""
+
+#: ../main.php:2236
+msgid "Export"
+msgstr ""
+
+#: ../main.php:2243
+msgid "Import WP Edit Options"
+msgstr ""
+
+#: ../main.php:2245
+msgid ""
+"Import the plugin settings from a .json file. This file can be obtained by "
+"exporting the settings on another site using the form above."
+msgstr ""
+
+#: ../main.php:2251
+msgid "Import"
+msgstr ""
+
+#: ../main.php:2258
+msgid "Reset WP Edit Options"
+msgstr ""
+
+#: ../main.php:2260
+msgid "Reset all plugin settings to their original default states."
+msgstr ""
+
+#: ../main.php:2263
+msgid "Reset Settings"
+msgstr ""
+
+#: ../main.php:2270
+msgid "Uninstall WP Edit (Completely)"
+msgstr ""
+
+#: ../main.php:2272
+msgid ""
+"Designed by intention, this plugin will not delete the associated database "
+"tables when activating and deactivating."
+msgstr ""
+
+#: ../main.php:2273
+msgid ""
+"This ensures the data is kept safe when troubleshooting other WordPress "
+"conflicts."
+msgstr ""
+
+#: ../main.php:2274
+msgid ""
+"In order to completely uninstall the plugin, AND remove all associated "
+"database tables, please use the option below."
+msgstr ""
+
+#: ../main.php:2279
+msgid "Please confirm before proceeding"
+msgstr ""
+
+#: ../main.php:2280
+msgid "Uninstall"
+msgstr ""
+
+#: ../main.php:2377
+msgid "Please upload a valid .json file"
+msgstr ""
+
+#: ../main.php:2383
+msgid "Please upload a file to import"
+msgstr ""
+
+#: ../main.php:2430
+msgid "Ajax is working... but having trouble connecting with the database."
+msgstr ""
+
+#: ../main.php:2634
+msgid "Stay Informed"
+msgstr ""
+
+#: ../main.php:2636
+msgid ""
+"Please signup to our free <a target=\"_blank\" href=\"http://www.feedblitz."
+"com/f/?Sub=950320\">Feedblitz</a> service; to receive important plugin news, "
+"updates and free offers."
+msgstr ""
+
+#: ../main.php:2643
+msgid "Other Plugin News"
+msgstr ""
+
+#: ../main.php:2645
+msgid ""
+"* A stable version of WP Edit will soon be available on our <a target="
+"\"_blank\" href=\"http://wpeditpro.com\">website</a>. The stable version "
+"will contain some options not available in the free version."
+msgstr ""
+
+#: ../main.php:2647
+msgid ""
+"* Plugin documentation is being added to our <a target=\"_blank\" href="
+"\"http://learn.wpeditpro.com\">Knowledge Base</a>. Check back frequently for "
+"more tutorial articles."
+msgstr ""

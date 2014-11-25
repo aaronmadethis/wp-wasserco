@@ -1,82 +1,88 @@
-/*
-*  input.js
-*
-*  All javascript needed for ACF to work
-*
-*  @type	awesome
-*  @date	1/08/13
-*
-*  @param	N/A
-*  @return	N/A
-*/
-
-var acf = {
-	
-	// vars
-	l10n				: {},
-	o					: {},
-	
-	
-	// functions
-	get					: null,
-	update				: null,
-	_e					: null,
-	get_atts			: null,
-	get_fields			: null,
-	get_uniqid			: null,
-	serialize_form		: null,
-	
-	
-	// hooks
-	add_action			: null,
-	remove_action		: null,
-	do_action			: null,
-	add_filter			: null,
-	remove_filter		: null,
-	apply_filters		: null,
-	
-	
-	// modules
-	validation			:	null,
-	conditional_logic	:	null,
-	media				:	null,
-	
-	
-	// fields
-	fields				:	{
-		date_picker		:	null,
-		color_picker	:	null,
-		image			:	null,
-		file			:	null,
-		wysiwyg			:	null,
-		gallery			:	null,
-		relationship	:	null
-	}
-};
+var acf;
 
 (function($){
 	
 	
 	/*
-	*  Functions
+	*  exists
 	*
-	*  These functions interact with the o object, and events
+	*  This function will return true if a jQuery selection exists
 	*
 	*  @type	function
-	*  @date	23/10/13
+	*  @date	8/09/2014
 	*  @since	5.0.0
 	*
-	*  @param	$n/a
-	*  @return	$n/a
+	*  @param	n/a
+	*  @return	(boolean)
 	*/
 	
-	$.extend(acf, {
+	$.fn.exists = function() {
+	
+		return $(this).length>0;
+		
+	};
+	
+	
+	/*
+	*  outerHTML
+	*
+	*  This function will return a string containing the HTML of the selected element
+	*
+	*  @type	function
+	*  @date	19/11/2013
+	*  @since	5.0.0
+	*
+	*  @param	$.fn
+	*  @return	(string)
+	*/
+	
+	$.fn.outerHTML = function() {
+	    
+	    return $(this).get(0).outerHTML;
+	    
+	};
+	
+	
+	acf = {
+		
+		// vars
+		l10n:	{},
+		o:		{},
+		
+		
+		/*
+		*  update
+		*
+		*  This function will update a value found in acf.o
+		*
+		*  @type	function
+		*  @date	8/09/2014
+		*  @since	5.0.0
+		*
+		*  @param	k (string) the key
+		*  @param	v (mixed) the value
+		*  @return	n/a
+		*/
 		
 		update : function( k, v ){
 				
 			this.o[ k ] = v;
 			
 		},
+		
+		
+		/*
+		*  get
+		*
+		*  This function will return a value found in acf.o
+		*
+		*  @type	function
+		*  @date	8/09/2014
+		*  @since	5.0.0
+		*
+		*  @param	k (string) the key
+		*  @return	v (mixed) the value
+		*/
 		
 		get : function( k ){
 			
@@ -90,27 +96,213 @@ var acf = {
 			
 		},
 		
-		_e : function( context, string ){
+		
+		/*
+		*  _e
+		*
+		*  This functiln will return a string found in acf.l10n
+		*
+		*  @type	function
+		*  @date	8/09/2014
+		*  @since	5.0.0
+		*
+		*  @param	k1 (string) the first key to look for
+		*  @param	k2 (string) the second key to look for
+		*  @return	string (string)
+		*/
+		
+		_e : function( k1, k2 ){
 			
 			// defaults
-			string = string || false;
+			k2 = k2 || false;
 			
 			
 			// get context
-			var r = this.l10n[ context ] || false;
+			var string = this.l10n[ k1 ] || '';
 			
 			
 			// get string
-			if( string )
-			{
-				r = r[ string ] || false;
+			if( k2 ) {
+			
+				string = string[ k2 ] || '';
+				
 			}
 			
 			
 			// return
-			return r || '';
+			return string;
 			
 		},
+		
+		
+		/*
+		*  add_action
+		*
+		*  This function uses wp.hooks to mimics WP add_action
+		*
+		*  @type	function
+		*  @date	8/09/2014
+		*  @since	5.0.0
+		*
+		*  @param	
+		*  @return
+		*/
+		
+		add_action : function() {
+			
+			// allow multiple action parameters such as 'ready append'
+			var actions = arguments[0].split(' ');
+			
+			for( k in actions ) {
+			
+				// prefix action
+				arguments[0] = 'acf.' + actions[ k ];
+				
+				wp.hooks.addAction.apply(this, arguments);
+			}
+			
+			return this;
+			
+		},
+		
+		
+		/*
+		*  remove_action
+		*
+		*  This function uses wp.hooks to mimics WP remove_action
+		*
+		*  @type	function
+		*  @date	8/09/2014
+		*  @since	5.0.0
+		*
+		*  @param	
+		*  @return
+		*/
+		
+		remove_action : function() {
+			
+			// prefix action
+			arguments[0] = 'acf.' + arguments[0];
+			
+			wp.hooks.removeAction.apply(this, arguments);
+			
+			return this;
+			
+		},
+		
+		
+		/*
+		*  do_action
+		*
+		*  This function uses wp.hooks to mimics WP do_action
+		*
+		*  @type	function
+		*  @date	8/09/2014
+		*  @since	5.0.0
+		*
+		*  @param	
+		*  @return
+		*/
+		
+		do_action : function() {
+			
+			// prefix action
+			arguments[0] = 'acf.' + arguments[0];
+			
+			wp.hooks.doAction.apply(this, arguments);
+			
+			return this;
+			
+		},
+		
+		
+		/*
+		*  add_filter
+		*
+		*  This function uses wp.hooks to mimics WP add_filter
+		*
+		*  @type	function
+		*  @date	8/09/2014
+		*  @since	5.0.0
+		*
+		*  @param	
+		*  @return
+		*/
+		
+		add_filter : function() {
+			
+			// prefix action
+			arguments[0] = 'acf.' + arguments[0];
+			
+			wp.hooks.addFilter.apply(this, arguments);
+			
+			return this;
+			
+		},
+		
+		
+		/*
+		*  remove_filter
+		*
+		*  This function uses wp.hooks to mimics WP remove_filter
+		*
+		*  @type	function
+		*  @date	8/09/2014
+		*  @since	5.0.0
+		*
+		*  @param	
+		*  @return
+		*/
+		
+		remove_filter : function() {
+			
+			// prefix action
+			arguments[0] = 'acf.' + arguments[0];
+			
+			wp.hooks.removeFilter.apply(this, arguments);
+			
+			return this;
+			
+		},
+		
+		
+		/*
+		*  apply_filters
+		*
+		*  This function uses wp.hooks to mimics WP apply_filters
+		*
+		*  @type	function
+		*  @date	8/09/2014
+		*  @since	5.0.0
+		*
+		*  @param	
+		*  @return
+		*/
+		
+		apply_filters : function() {
+			
+			// prefix action
+			arguments[0] = 'acf.' + arguments[0];
+			
+			return wp.hooks.applyFilters.apply(this, arguments);
+			
+		},
+		
+		
+		/*
+		*  get_fields
+		*
+		*  This function will return a jQuery selection of fields
+		*
+		*  @type	function
+		*  @date	8/09/2014
+		*  @since	5.0.0
+		*
+		*  @param	args (object)
+		*  @param	$el (jQuery) element to look within
+		*  @param	all (boolean) return all fields or allow filtering (for repeater)
+		*  @return	$fields (jQuery)
+		*/
 		
 		get_fields : function( args, $el, all ){
 			
@@ -156,13 +348,9 @@ var acf = {
 			
 			// filter out fields
 			if( !all ) {
-			
-				$fields = $fields.filter(function(){
-					
-					return acf.apply_filters('is_field_ready_for_js', true, $(this));			
-
-				});
 				
+				$fields = acf.apply_filters('get_fields', $fields);
+								
 			}
 			
 			
@@ -173,6 +361,21 @@ var acf = {
 			return $fields;
 							
 		},
+		
+		
+		/*
+		*  get_field
+		*
+		*  This function will return a jQuery selection based on a field key
+		*
+		*  @type	function
+		*  @date	8/09/2014
+		*  @since	5.0.0
+		*
+		*  @param	field_key (string)
+		*  @param	$el (jQuery) element to look within
+		*  @return	$field (jQuery)
+		*/
 		
 		get_field : function( field_key, $el ){
 			
@@ -185,9 +388,10 @@ var acf = {
 			
 			
 			// validate
-			if( !$fields.exists() )
-			{
+			if( !$fields.exists() ) {
+			
 				return false;
+				
 			}
 			
 			
@@ -196,11 +400,20 @@ var acf = {
 			
 		},
 		
-		get_the_field : function( $el ){
-			
-			return $el.parent().closest('.acf-field');
-			
-		},
+		
+		/*
+		*  get_closest_field
+		*
+		*  This function will return the closest parent field
+		*
+		*  @type	function
+		*  @date	8/09/2014
+		*  @since	5.0.0
+		*
+		*  @param	$el (jQuery) element to start from
+		*  @param	args (object)
+		*  @return	$field (jQuery)
+		*/
 		
 		get_closest_field : function( $el, args ){
 			
@@ -224,28 +437,39 @@ var acf = {
 			
 		},
 		
+		
+		/*
+		*  get_field_wrap
+		*
+		*  This function will return the closest parent field
+		*
+		*  @type	function
+		*  @date	8/09/2014
+		*  @since	5.0.0
+		*
+		*  @param	$el (jQuery) element to start from
+		*  @return	$field (jQuery)
+		*/
+		
 		get_field_wrap : function( $el ){
 			
 			return $el.closest('.acf-field');
 			
 		},
 		
+		
 		/*
-get_field_data : function( $el, name ){
-			
-			// defaults
-			name = name || false;
-			
-			
-			// vars
-			$field = this.get_field_wrap( $el );
-			
-			
-			// return
-			return this.get_data( $field, name );
-			
-		},
-*/
+		*  get_field_key
+		*
+		*  This function will return the field's key
+		*
+		*  @type	function
+		*  @date	8/09/2014
+		*  @since	5.0.0
+		*
+		*  @param	$field (jQuery)
+		*  @return	(string)
+		*/
 		
 		get_field_key : function( $field ){
 		
@@ -253,12 +477,40 @@ get_field_data : function( $el, name ){
 			
 		},
 		
+		
+		/*
+		*  get_field_type
+		*
+		*  This function will return the field's type
+		*
+		*  @type	function
+		*  @date	8/09/2014
+		*  @since	5.0.0
+		*
+		*  @param	$field (jQuery)
+		*  @return	(string)
+		*/
+		
 		get_field_type : function( $field ){
 		
 			return this.get_data( $field, 'type' );
 			
 		},
 		
+		
+		/*
+		*  get_data
+		*
+		*  This function will return attribute data for a given elemnt
+		*
+		*  @type	function
+		*  @date	8/09/2014
+		*  @since	5.0.0
+		*
+		*  @param	$el (jQuery)
+		*  @param	name (mixed)
+		*  @return	(mixed)
+		*/
 		
 		get_data : function( $el, name ){
 			
@@ -323,29 +575,46 @@ get_field_data : function( $el, name ){
 				
 		},
 		
+		
+		/*
+		*  is_field
+		*
+		*  This function will return true if the jQuery selection is an acf-field
+		*
+		*  @type	function
+		*  @date	8/09/2014
+		*  @since	5.0.0
+		*
+		*  @param	$el (jQuery)
+		*  @param	args (object)
+		*  @return	$post_id (int)
+		*/
+		
 		is_field : function( $el, args ){
 			
 			// defaults
 			args = args || {};
 			
 			
-			// var
-			var r = true;
+			// bail early if class does not exist
+			if( !$el.hasClass('acf-field') ) {
 			
-			
-			// check $el class
-			if( ! $el.hasClass('acf-field') )
-			{
-				r = false;
+				return false;
+				
 			}
+			
+			
+			// vars
+			var r = true;
 			
 			
 			// check args (data attributes)
 			$.each( args, function( k, v ) {
 				
-				if( $el.attr('data-' + k) != v )
-				{
+				if( $el.attr('data-' + k) != v ) {
+				
 					r = false;
+					
 				}
 				
 			});
@@ -355,6 +624,21 @@ get_field_data : function( $el, name ){
 			return r;
 			
 		},
+		
+		
+		/*
+		*  is_sub_field
+		*
+		*  This function will return true if the jQuery selection is a sub field
+		*
+		*  @type	function
+		*  @date	8/09/2014
+		*  @since	5.0.0
+		*
+		*  @param	$field (jQuery)
+		*  @param	args (object)
+		*  @return	(boolean)
+		*/
 		
 		is_sub_field : function( $field, args ) {
 			
@@ -389,6 +673,21 @@ get_field_data : function( $el, name ){
 			return r;
 			
 		},
+		
+		
+		/*
+		*  get_uniqid
+		*
+		*  This function will return a unique string ID
+		*
+		*  @type	function
+		*  @date	8/09/2014
+		*  @since	5.0.0
+		*
+		*  @param	prefix (string)
+		*  @param	more_entropy (boolean)
+		*  @return	(string)
+		*/
 		
 		get_uniqid : function( prefix, more_entropy ){
 		
@@ -439,6 +738,21 @@ get_field_data : function( $el, name ){
 			
 		},
 		
+		
+		/*
+		*  serialize_form
+		*
+		*  This function will create an object of data containing all form inputs within an element
+		*
+		*  @type	function
+		*  @date	8/09/2014
+		*  @since	5.0.0
+		*
+		*  @param	$el (jQuery selection)
+		*  @param	prefix (string)
+		*  @return	$post_id (int)
+		*/
+		
 		serialize_form : function( $el, prefix ){
 			
 			// defaults
@@ -457,7 +771,7 @@ get_field_data : function( $el, name ){
 			$selector = $el.find('select, textarea, input');
 			
 			
-			// filter our hidden field groups
+			// filter out hidden field groups
 			$selector = $selector.filter(function(){
 				
 				return $(this).closest('.postbox.acf-hidden').exists() ? false : true;
@@ -509,6 +823,21 @@ get_field_data : function( $el, name ){
 			return data;
 		},
 		
+		
+		/*
+		*  remove_tr
+		*
+		*  This function will remove a tr element with animation
+		*
+		*  @type	function
+		*  @date	8/09/2014
+		*  @since	5.0.0
+		*
+		*  @param	$tr (jQuery selection)
+		*  @param	callback (function) runs on complete
+		*  @return	n/a
+		*/
+		
 		remove_tr : function( $tr, callback ){
 			
 			// vars
@@ -535,9 +864,10 @@ get_field_data : function( $el, name ){
 					
 					$tr.remove();
 					
-					if( typeof(callback) == 'function' )
-					{
+					if( typeof(callback) == 'function' ) {
+					
 						callback();
+					
 					}
 					
 					
@@ -547,6 +877,22 @@ get_field_data : function( $el, name ){
 			}, 250);
 			
 		},
+		
+		
+		/*
+		*  remove_el
+		*
+		*  This function will remove an element with animation
+		*
+		*  @type	function
+		*  @date	8/09/2014
+		*  @since	5.0.0
+		*
+		*  @param	$el (jQuery selection)
+		*  @param	callback (function) runs on complete
+		*  @param	end_height (int)
+		*  @return	n/a
+		*/
 		
 		remove_el : function( $el, callback, end_height ){
 			
@@ -576,15 +922,33 @@ get_field_data : function( $el, name ){
 				
 				$(this).remove();
 				
-				if( typeof(callback) == 'function' )
-				{
+				if( typeof(callback) == 'function' ) {
+				
 					callback();
+				
 				}
 				
 			});
 			
 			
 		},
+		
+		
+		/*
+		*  isset
+		*
+		*  This function will return true if an object key exists
+		*
+		*  @type	function
+		*  @date	8/09/2014
+		*  @since	5.0.0
+		*
+		*  @param	(object)
+		*  @param	key1 (string)
+		*  @param	key2 (string)
+		*  @param	...
+		*  @return	(boolean)
+		*/
 		
 		isset : function(){
 			
@@ -613,6 +977,20 @@ get_field_data : function( $el, name ){
 			
 		},
 		
+		
+		/*
+		*  open_popup
+		*
+		*  This function will create and open a popup modal
+		*
+		*  @type	function
+		*  @date	8/09/2014
+		*  @since	5.0.0
+		*
+		*  @param	args (object)
+		*  @return	n/a
+		*/
+		
 		open_popup : function( args ){
 			
 			// vars
@@ -620,9 +998,10 @@ get_field_data : function( $el, name ){
 			
 			
 			// already exists?
-			if( $popup.exists() )
-			{
+			if( $popup.exists() ) {
+			
 				return update_popup(args);
+				
 			}
 			
 			
@@ -657,6 +1036,20 @@ get_field_data : function( $el, name ){
 			
 		},
 		
+		
+		/*
+		*  update_popup
+		*
+		*  This function will update the content within a popup modal
+		*
+		*  @type	function
+		*  @date	8/09/2014
+		*  @since	5.0.0
+		*
+		*  @param	args (object)
+		*  @return	n/a
+		*/
+		
 		update_popup : function( args ){
 			
 			// vars
@@ -680,43 +1073,62 @@ get_field_data : function( $el, name ){
 			}, args);
 			
 			
-			if( args.width )
-			{
+			if( args.width ) {
+			
 				$popup.find('.acf-popup-box').css({
 					'width'			: args.width,
 					'margin-left'	: 0 - (args.width / 2),
 				});
+				
 			}
 			
-			if( args.height )
-			{
+			if( args.height ) {
+			
 				$popup.find('.acf-popup-box').css({
 					'height'		: args.height,
 					'margin-top'	: 0 - (args.height / 2),
 				});	
+				
 			}
 			
-			if( args.title )
-			{
+			if( args.title ) {
+			
 				$popup.find('.title h3').html( args.title );
+			
 			}
 			
-			if( args.content )
-			{
+			if( args.content ) {
+			
 				$popup.find('.inner').html( args.content );
+				
 			}
 			
-			if( args.loading )
-			{
+			if( args.loading ) {
+			
 				$popup.find('.loading').show();
-			}
-			else
-			{
+				
+			} else {
+			
 				$popup.find('.loading').hide();
+				
 			}
 			
 			return $popup;
 		},
+		
+		
+		/*
+		*  close_popup
+		*
+		*  This function will close and remove a popup modal
+		*
+		*  @type	function
+		*  @date	8/09/2014
+		*  @since	5.0.0
+		*
+		*  @param	n/a
+		*  @return	n/a
+		*/
 		
 		close_popup : function(){
 			
@@ -732,6 +1144,20 @@ get_field_data : function( $el, name ){
 			
 			
 		},
+		
+		
+		/*
+		*  update_user_setting
+		*
+		*  This function will send an AJAX request to update a user setting
+		*
+		*  @type	function
+		*  @date	8/09/2014
+		*  @since	5.0.0
+		*
+		*  @param	$post_id (int)
+		*  @return	$post_id (int)
+		*/
 		
 		update_user_setting : function( name, value ) {
 			
@@ -749,6 +1175,20 @@ get_field_data : function( $el, name ){
 			
 		},
 		
+		
+		/*
+		*  prepare_for_ajax
+		*
+		*  This function will prepare data for an AJAX request
+		*
+		*  @type	function
+		*  @date	8/09/2014
+		*  @since	5.0.0
+		*
+		*  @param	args (object)
+		*  @return	args
+		*/
+		
 		prepare_for_ajax : function( args ) {
 			
 			// nonce
@@ -763,6 +1203,20 @@ get_field_data : function( $el, name ){
 			return args;
 			
 		},
+		
+		
+		/*
+		*  is_ajax_success
+		*
+		*  This function will return true for a successful WP AJAX response
+		*
+		*  @type	function
+		*  @date	8/09/2014
+		*  @since	5.0.0
+		*
+		*  @param	json (object)
+		*  @return	(boolean)
+		*/
 		
 		is_ajax_success : function( json ) {
 			
@@ -810,6 +1264,20 @@ get_field_data : function( $el, name ){
 			
 		},
 		
+		
+		/*
+		*  is_in_view
+		*
+		*  This function will return true if a jQuery element is visible in browser
+		*
+		*  @type	function
+		*  @date	8/09/2014
+		*  @since	5.0.0
+		*
+		*  @param	$el (jQuery)
+		*  @return	(boolean)
+		*/
+		
 		is_in_view: function( $el ) {
 			
 			var docViewTop = $(window).scrollTop();
@@ -820,137 +1288,160 @@ get_field_data : function( $el, name ){
 		
 		    return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
 					
-		}
+		},
 		
-	});
-	
-	
-	/*
-	*  Hooks
-	*
-	*  These functions act as wrapper functions for the included event-manager JS library
-	*  Wrapper functions will ensure that future changes to event-manager do not disrupt
-	*  any custom actions / filter code written by users
-	*
-	*  @type	functions
-	*  @date	30/11/2013
-	*  @since	5.0.0
-	*
-	*  @param	n/a
-	*  @return	n/a
-	*/
-	
-	$.extend(acf, {
 		
-		add_action : function() {
+		/*
+		*  val
+		*
+		*  This function will update an elements value and trigger the change event if differene
+		*
+		*  @type	function
+		*  @date	16/10/2014
+		*  @since	5.0.9
+		*
+		*  @param	$el (jQuery)
+		*  @param	val (mixed)
+		*  @return	n/a
+		*/
+		
+		val: function( $el, val ){
 			
-			// allow multiple action parameters such as 'ready append'
-			var actions = arguments[0].split(' ');
+			// vars
+			var orig = $el.val();
 			
-			for( k in actions )
-			{
-				// prefix action
-				arguments[0] = 'acf.' + actions[ k ];
+			
+			// update value
+			$el.val( val );
+			
+			
+			// trigger change
+			if( val != orig ) {
 				
-				wp.hooks.addAction.apply(this, arguments);
+				$el.trigger('change');
+				
 			}
 			
-			return this;
-		},
-		
-		remove_action : function() {
-			
-			// prefix action
-			arguments[0] = 'acf.' + arguments[0];
-			
-			wp.hooks.removeAction.apply(this, arguments);
-			
-			return this;
-		},
-		
-		do_action : function() {
-			
-			// prefix action
-			arguments[0] = 'acf.' + arguments[0];
-			
-			wp.hooks.doAction.apply(this, arguments);
-			
-			return this;
-		},
-		
-		add_filter : function() {
-			
-			// prefix action
-			arguments[0] = 'acf.' + arguments[0];
-			
-			wp.hooks.addFilter.apply(this, arguments);
-			
-			return this;
-		},
-		
-		remove_filter : function() {
-			
-			// prefix action
-			arguments[0] = 'acf.' + arguments[0];
-			
-			wp.hooks.removeFilter.apply(this, arguments);
-			
-			return this;
-		},
-		
-		apply_filters : function() {
-			
-			// prefix action
-			arguments[0] = 'acf.' + arguments[0];
-			
-			return wp.hooks.applyFilters.apply(this, arguments);
 		}
 		
-	});
-    
-	
-	/*
-	*  Exists
-	*
-	*  @description: returns true / false		
-	*  @created: 1/03/2011
-	*/
-	
-	$.fn.exists = function()
-	{
-		return $(this).length>0;
 	};
 	
 	
 	/*
-	*  outerHTML
+	*  acf.model
 	*
-	*  This function will return a string containing the HTML of the selected element
+	*  This model acts as a scafold for action.event driven modules
 	*
-	*  @type	function
-	*  @date	19/11/2013
+	*  @type	object
+	*  @date	8/09/2014
 	*  @since	5.0.0
 	*
-	*  @param	$.fn
-	*  @return	(string)
+	*  @param	(object)
+	*  @return	(object)
 	*/
 	
-	$.fn.outerHTML = function() {
-	    
-	    return $(this).get(0).outerHTML;
-	    
-	}
+	acf.model = {
+		
+		// vars
+		actions:	{},
+		filters:	{},
+		events:		{},
+		
+		
+		extend: function( args ){
+			
+			// extend
+			var model = $.extend( {}, this, args );
+			
+			
+			// setup actions
+			$.each(model.actions, function( name, callback ){
+				
+				// split
+				var data = name.split(' ');
+				
+				
+				// add missing priority
+				var name = data[0] || '',
+					priority = data[1] || 10;
+				
+				
+				// add action
+				acf.add_action(name, model[ callback ], priority, model);
+			
+			});
+			
+			
+			// setup filters
+			$.each(model.filters, function( name, callback ){
+				
+				// split
+				var data = name.split(' ');
+				
+				
+				// add missing priority
+				var name = data[0] || '',
+					priority = data[1] || 10;
+				
+				
+				// add action
+				acf.add_filter(name, model[ callback ], priority, model);
+			
+			});
+			
+			
+			// setup events
+			$.each(model.events, function( k, callback ){
+				
+				// vars
+				var event = k.substr(0,k.indexOf(' ')),
+					selector = k.substr(k.indexOf(' ')+1);
+				
+				
+				// add event
+				$(document).on(event, selector, function( e ){
+					
+					// appen $el to event object
+					e.$el = $(this);
+					
+					
+					// callback
+					model[ callback ].apply(model, [e]);
+					
+				});
+				
+			});
+			
+			
+			// return
+			return model;
+			
+		}
+		
+	};
+	
+	
 	
 	
 	/*
-	*  3.5 Media
+	*  media
 	*
-	*  @description: 
-	*  @since: 3.5.7
-	*  @created: 16/01/13
+	*  This model contains all functionallity to select and edit attachments
+	*
+	*  @type	function
+	*  @date	8/09/2014
+	*  @since	5.0.0
+	*
+	*  @param	$post_id (int)
+	*  @return	$post_id (int)
 	*/
 	
-	acf.media = {
+	acf.media = acf.model.extend({
+		
+		actions: {
+			'ready':	'onReady',
+			'load':		'onLoad'
+		},
 		
 		popup : function( args ) {
 			
@@ -1023,12 +1514,17 @@ get_field_data : function( $el, name ){
 					// If the user isn't allowed to edit fields,
 					// can they still edit it locally?
 					allowLocalEdits: true,
-				}),
-				
-				// edit image functionality
-				new wp.media.controller.EditImage()
+				})
 				
 			];
+			
+			
+			// edit image functionality (added in WP 3.9)
+			if( typeof wp.media.controller.EditImage !== 'undefined' ) {
+				
+				options.states.push( new wp.media.controller.EditImage() );
+				
+			}
 			
 			
 			// create frame
@@ -1273,21 +1769,48 @@ frame.on('all', function( e ) {
 			
 		},
 		
-		init : function(){
+		onReady: function(){
+			
+			// vars
+			var version = acf.get('wp_version');
+			
+			
+			// bail early if no version
+			if( !version ) {
+				
+				return;
+				
+			}
+			
+			
+			// use only major version
+			if( typeof version == 'string' ) {
+				
+				version = version.substr(0,1);
+				
+			}
+			
+			
+			$('body').addClass('acf-wp-' + version);
+			
+		},
+		
+		onLoad: function(){
 			
 			// bail early if wp.media does not exist (field group edit page)
-			if( typeof wp == 'undefined' )
-			{
+			if( typeof wp == 'undefined' ) {
+			
 				return false;
+				
 			}
 			
 			
 			// validate prototype
-			if( ! acf.isset(wp, 'media', 'view', 'AttachmentCompat', 'prototype') )
-			{
-				return false;	
-			}
+			if( ! acf.isset(wp, 'media', 'view', 'AttachmentCompat', 'prototype') ) {
 			
+				return false;
+				
+			}
 			
 			
 			// vars
@@ -1307,9 +1830,10 @@ frame.on('all', function( e ) {
 				
 				
 				// validate
-				if( _this.ignore_render )
-				{
+				if( _this.ignore_render ) {
+				
 					return this;	
+					
 				}
 				
 				
@@ -1325,16 +1849,18 @@ frame.on('all', function( e ) {
 					
 					
 					// is this an edit only modal?
-					if( $media_model.hasClass('acf-media-modal') )
-					{
+					if( $media_model.hasClass('acf-media-modal') ) {
+					
 						return;	
+						
 					}
 					
 					
 					// does button already exist?
-					if( $media_model.find('.media-frame-router .acf-expand-details').exists() )
-					{
+					if( $media_model.find('.media-frame-router .acf-expand-details').exists() ) {
+					
 						return;	
+						
 					}
 					
 					
@@ -1352,13 +1878,14 @@ frame.on('all', function( e ) {
 						
 						e.preventDefault();
 						
-						if( $media_model.hasClass('acf-expanded') )
-						{
+						if( $media_model.hasClass('acf-expanded') ) {
+						
 							$media_model.removeClass('acf-expanded');
-						}
-						else
-						{
+							
+						} else {
+							
 							$media_model.addClass('acf-expanded');
+							
 						}
 						
 					});
@@ -1442,14 +1969,7 @@ frame.on('all', function( e ) {
 			
 			
 		}
-	};
-	
-	acf.add_action('load', function(){
-		
-		acf.media.init();
-		
 	});
-	
 	
 	
 	/*
@@ -1465,48 +1985,139 @@ frame.on('all', function( e ) {
 	*  @return	$post_id (int)
 	*/
 		
-	acf.conditional_logic = {
+	acf.layout = acf.model.extend({
 		
-		items : {},
-		triggers : {},
+		active: 0,
 		
-		init : function(){
+		actions: {
+			'refresh': 	'refresh',
+		},
+		
+		refresh: function( $el ){
 			
-			// debug
-			//console.log( 'conditional_logic.init(%o)', this );
+			//console.time('acf.width.render');
+			
+			// defaults
+			$el = $el || $('body');
 			
 			
-			// reference
-			var self = this;
-			
-			
-			// events
-			$(document).on('change', '.acf-field input, .acf-field textarea, .acf-field select', function(){
+			// loop over visible fields
+			$el.find('.acf-fields:visible').each(function(){
 				
-				self.change( $(this) );
+				// vars
+				var $els = $(),
+					top = 0,
+					height = 0,
+					cell = -1;
+				
+				
+				// get fields
+				var $fields = $(this).children('.acf-field[data-width]:visible');
+				
+				
+				// bail early if no fields
+				if( !$fields.exists() ) {
+					
+					return;
+					
+				}
+				
+				
+				// reset fields
+				$fields.removeClass('acf-r0 acf-c0').css({'min-height': 0});
+				
+				
+				$fields.each(function( i ){
+					
+					// vars
+					var $el = $(this),
+						this_top = $el.position().top;
+					
+					
+					// set top
+					if( i == 0 ) {
+						
+						top = this_top;
+						
+					}
+					
+					
+					// detect new row
+					if( this_top != top ) {
+						
+						// set previous heights
+						$els.css({'min-height': (height+1)+'px'});
+						
+						// reset
+						$els = $();
+						top = $el.position().top; // don't use variable as this value may have changed due to min-height css
+						height = 0;
+						cell = -1;
+						
+					}
+					
+											
+					// increase
+					cell++;
+				
+					// set height
+					height = ($el.outerHeight() > height) ? $el.outerHeight() : height;
+				
+					// append
+					$els = $els.add( $el );
+					
+					// add classes
+					if( this_top == 0 ) {
+						
+						$el.addClass('acf-r0');
+						
+					} else if( cell == 0 ) {
+						
+						$el.addClass('acf-c0');
+						
+					}
+					
+				});
+				
 				
 			});
 			
+			//console.timeEnd('acf.width.render');
+
 			
-			// actions
-			acf.add_action('ready', function( $el ){
-				
-				self.render( $el );
-				
-			}, 20);
-			
-						
-			acf.add_action('append', function( $el ){
-				
-				self.render( $el );
-				
-			}, 20);
-			
-			
-			// return
-			return this;
-			
+		}
+		
+	});
+	
+	
+	/*
+	*  conditional_logic
+	*
+	*  description
+	*
+	*  @type	function
+	*  @date	21/02/2014
+	*  @since	3.5.1
+	*
+	*  @param	$post_id (int)
+	*  @return	$post_id (int)
+	*/
+		
+	acf.conditional_logic = acf.model.extend({
+		
+		actions: {
+			'ready 20': 	'render',
+			'append 20': 	'render'
 		},
+		
+		events: {
+			'change .acf-field input': 		'change',
+			'change .acf-field textarea': 	'change',
+			'change .acf-field select': 	'change'
+		},
+		
+		items: {},
+		triggers: {},
 		
 		add : function( key, groups ){
 			
@@ -1556,14 +2167,15 @@ frame.on('all', function( e ) {
 			
 		},
 		
-		change : function( $input ){
+		change : function( e ){
 			
 			// debug
 			//console.log( 'conditional_logic.change(%o)', $input );
 			
 			
 			// vars
-			var $field	= acf.get_field_wrap( $input ),
+			var $input	= e.$el,
+				$field	= acf.get_field_wrap( $input ),
 				$parent = $field.parent(),
 				key		= acf.get_field_key( $field );
 			
@@ -1591,12 +2203,16 @@ frame.on('all', function( e ) {
 				
 			}
 			
+			
+			// action for 3rd party customization
+			acf.do_action('refresh', $input);
+			
 		},
 		
 		render : function( $el ){
 			
 			// debug
-			//console.log('render(%o)', $el);
+			//console.log('conditional_logic.render(%o)', $el);
 			
 			
 			// defaults
@@ -1609,6 +2225,10 @@ frame.on('all', function( e ) {
 			
 			// render fields
 			this.render_fields( $targets );
+			
+			
+			// action for 3rd party customization
+			acf.do_action('refresh', $el);
 			
 		},
 		
@@ -1624,12 +2244,6 @@ frame.on('all', function( e ) {
 				self.render_field( $(this) );
 				
 			});
-			
-			
-			// repeater hide column
-			
-			// action for 3rd party customization
-			//acf.do_action('conditional_logic_render_field');
 			
 		},
 		
@@ -1884,7 +2498,7 @@ frame.on('all', function( e ) {
 			
 		}
 		
-	}.init();
+	});
 	
 	
 	
@@ -2220,6 +2834,7 @@ frame.on('all', function( e ) {
 	});
 	
 	
+	acf.fields = {};
 	acf.field = {
 		
 		// vars
@@ -2291,6 +2906,10 @@ frame.on('all', function( e ) {
 				
 			}
 			
+			
+			// return for chaining
+			return this;
+			
 		},
 		
 		doAction: function(){
@@ -2319,7 +2938,7 @@ frame.on('all', function( e ) {
 			
 			
 			// focus
-			this.doFocus( acf.get_closest_field( e.$el ) );
+			this.doFocus( acf.get_closest_field( e.$el, {type : this.type} ) );
 			
 			
 			// callback
