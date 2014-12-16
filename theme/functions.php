@@ -1,5 +1,16 @@
 <?php
 
+
+/* ================================================================================
+INCLUDE ADVANCE CUSTOM FIELDS
+================================================================================ 
+define('WASSERCO_THEME_PATH', get_template_directory() );
+
+if( function_exists('register_field_group') ){
+	require ( WASSERCO_THEME_PATH . '/functions/wasserco-acf-fields.php');
+}
+*/
+
 /* ================================================================================
 ADD THUMBNAIL SUPPORT AND ADDITIONAL IMAGE SIZES
 ================================================================================ */
