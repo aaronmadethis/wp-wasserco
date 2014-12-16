@@ -27,8 +27,7 @@
 				<h3>Private Equity</h3>
 				
 				<?php
-				$page_id = 10;
-				$uri = get_page_uri($page_id);
+				$uri = esc_url( get_permalink( get_page_by_title( 'About Wasserstein Partners' ) ) );
 				?>
 				<a class="button" href="<?php echo $uri; ?>">
 					<span></span>Learn More
@@ -41,8 +40,7 @@
 				<h3>Credit</h3>
 				
 				<?php
-				$page_id = 28;
-				$uri = get_page_uri($page_id);
+				$uri = esc_url( get_permalink( get_page_by_title( 'About Wasserstein Debt Opportunities' ) ) );
 				?>
 
 				<a class="button" href="<?php echo $uri; ?>">
