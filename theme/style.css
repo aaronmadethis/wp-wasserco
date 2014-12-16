@@ -540,6 +540,10 @@
 					border-color: #333333;
 					border-width: 0 0 1px 0;
 					}
+					nav.mobile li a{
+						display: inline-block;
+						width: 100%;
+						}
 					nav.mobile li ul.sub-menu li{
 						padding-bottom: 0;
 						border-width: 0;
@@ -589,10 +593,10 @@
 						font-weight: 400;
 						}
 				nav.mobile li.menu-item-109.sub-open ul.sub-menu{
-					height: 284px;
+					height: 212px;
 					}
 				nav.mobile li.menu-item-110.sub-open ul.sub-menu{
-					height: 150px;
+					height: 90px;
 					}
 
 				nav.mobile li.menu-item-has-children{
@@ -610,7 +614,11 @@
 					position: absolute;
 					width: 10px;
 					height: 100%;
+					z-index: -1;
 					}
+					nav.mobile li.menu-item-has-children.menu-item-110 a::after{
+						top: -12px;
+						}
 					nav.mobile li.menu-item-has-children li a::after{
 						background-image: none;
 						}
@@ -665,9 +673,14 @@
 	FOOTER
 	===================================*/
 	.footer-spacing{
-		/*margin-bottom: 370px;*/
-		margin-bottom: 40px;
+		margin-bottom: 260px;
+		/*margin-bottom: 40px;*/
 		}
+
+		body.page-child .footer-spacing{
+			/*margin-bottom: 100px;*/
+			margin-bottom: 370px;
+			}
 		body.home .footer-spacing{
 			margin-bottom: 40px;
 			}
@@ -702,15 +715,19 @@
 		background-color: #e5e5e5;
 		color: #919191;
 		letter-spacing: 1px;
-		text-align: center;
+		text-align: left;
 		}
+		body.home footer .copyright{
+			text-align: center;
+			}
 
 	footer .logo-wrapper{
-		/*width: 100%;*/
-		padding: 36px 0;
+		padding: 32px 15px 0 15px;
 		}
 		footer .logo-wrapper .logo{
-			width: 281px;
+			margin-left: 16px;
+			width: 100%;
+			max-width: 281px;
 			height: 57px;
 			background-repeat: no-repeat;
 			background-image: url(./images/logo-wasserco-color.svg);
@@ -719,13 +736,109 @@
 			}
 
 	footer .mega-menu{
-		margin-bottom: 10px;
-		border-width: 0 0 0 1px;
+		border-width: 0 0 0 0;
 		border-color: #e5e5e5;
 		border-style: solid;
-		margin-top: 1em;
+		/*
 		padding: 3em 0 3em 6em;
+		margin-bottom: 10px;
+		margin-top: 1em;
+		*/
 		}
+		footer .mega-menu ul li,
+		footer .mega-menu h1{
+			font-size: 12px;
+			font-family: Clan, helvetica, arial, sans-serif;
+			}
+			footer .mega-menu h1{
+				border-width: 0 0 1px 0;
+				border-color: #e5e5e5;
+				border-style: solid;
+				margin-bottom: 6px;
+				margin-top: 0px;
+				padding-bottom: 6px;
+				font-weight: 400;
+				}
+			footer .mega-menu ul li{
+				padding-bottom: 6px;
+				}
+				footer .mega-menu ul li.current_page_item a{
+					font-weight: 600;
+					}
+
+		footer .wasserco_p .inside{
+			margin: 16px 0 10px 0;
+			border-width: 0 1px 0 1px;
+			border-color: #e5e5e5;
+			border-style: solid;
+			padding: 0 32px;
+			}
+		footer .wasserco_do .inside{
+			margin: 16px 0 10px 0;
+			padding-right: 16px;
+			}
+		footer .wasserco_p ul{
+			position: relative;
+			}
+		footer .wasserco_p li{
+			width: 50%;
+			}
+		footer .wasserco_p li:nth-child(n+4){
+			position: absolute;
+			left: 60%;
+			width: 40%;
+			top: 0px;
+			}
+			footer .wasserco_p li:nth-child(5){
+				top: 23px;
+				}
+
+
+
+/*		footer .mega-menu ul li{
+			float: left;
+			width: 20%;
+			font-size: 11px;
+			font-family: Clan, helvetica, arial, sans-serif;
+			margin-bottom: 6px;
+			border-width: 0 0 0 1px;
+			border-color: #e5e5e5;
+			border-style: solid;
+			padding-left: 12px;
+			}
+			footer .mega-menu ul li:first-child{
+				border-width: 0 0 0 0;
+				padding-left: 0;
+				}
+			footer .mega-menu ul.sub-menu{margin-top: 6px;}
+			footer .mega-menu ul.sub-menu li{
+				clear: both;
+				float: none;
+				width: 100%;
+				border-width: 0 0 0 0;
+				padding-left: 0;
+				}
+
+				footer .mega-menu li.home{width:58px;}
+				footer .mega-menu li.about_us{width:87px;}
+				footer .mega-menu li.wp{width:196px;}
+				footer .mega-menu li.wdo{width:250px;}
+				footer .mega-menu li.contact{width:62px;}
+
+				footer li.current-menu-item a{font-weight: 600;}
+				
+				footer li.current-menu-ancestor a{
+					color: #838385;
+					font-weight: 600;
+					}
+				footer li.current-menu-ancestor ul.sub-menu a{
+					color: black;
+					font-weight: 400;
+					}
+				footer li.current-menu-ancestor ul.sub-menu li.current-menu-item a{
+					font-weight: 600;
+					}
+
 		footer .mega-menu .column{
 			width: 33.33333333%;
 			float:left;
@@ -744,18 +857,19 @@
 			footer .mega-menu .column a:hover{
 				text-decoration: underline;
 				}
-				footer .mega-menu .column a span{line-height: inherit;}
+				footer .mega-menu .column a span{line-height: inherit;}*/
 /*
 				footer .mega-menu .column:nth-child(1){width: 20%;}
 				footer .mega-menu .column:nth-child(2){width: 40%;}
 				footer .mega-menu .column:nth-child(3){width: 40%;}
 */
-			footer .page-item-7,
+/*			footer .page-item-7,
 			footer .page-item-34{
 				position:relative;
 				left: 44%;
 				top: -21px;
 				}
+*/
 
 
 	@media screen and (max-width: 991px){
