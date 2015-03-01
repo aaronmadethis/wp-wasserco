@@ -528,6 +528,7 @@
 			nav.mobile a{
 				font-size: 18px;
 				font-weight: 400;
+				line-height: 1.2em;
 				-webkit-font-smoothing: antialiased;
 				color:#fff;
 				}
@@ -883,6 +884,13 @@
 			}
 	}
 	@media screen and (max-width: 767px){
+		footer .mega-menu{
+			border-width: 0 0 0 0;
+			display: none;
+			}
+		footer .mega-menu .logo-wrapper{
+			width: 90%;
+			}
 		footer .mega-menu .column{
 			width: 100%;
 			float:none;
@@ -893,18 +901,24 @@
 		footer .page-item-34{
 			position:static;
 			}
+		footer .wasserco_do,
+		footer .wasserco_p{
+			display: none;
+			}
 		footer section{
 			border-style: solid;
 			border-color: #e5e5e5;
-			border-width: 1px 0 1px 0;
+			border-width: 0px 0 0px 0;
 			margin-bottom: 7px;
 			}
-		.footer-spacing{
-			margin-bottom: 40px;
+		.footer-spacing{			
+			margin-bottom: 50px;
 			}
 		footer .copyright{
 			text-align: center;
 			letter-spacing: 0;
+			font-size: 7px;
+			letter-spacing: 0px;
 			}
 
 	}
@@ -2495,11 +2509,3 @@ img.size-full {
     width: auto; /* Prevent stretching of full-size images with height and >>width attributes in IE8 */
 }
 .wp-caption { max-width: 97.5%; }
-
-
-
-
-
-
-
-
